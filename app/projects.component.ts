@@ -10,7 +10,7 @@ import { OnInit } from '@angular/core';
 @Component({
   selector: 'my-projects',
   templateUrl: 'app/projects.component.html',
-  styleUrls: [ 'app/projects.component.css']
+  styleUrls: [ 'app/projects.component.css' ]
 })
 
 // controller
@@ -39,7 +39,8 @@ export class ProjectsComponent implements OnInit {
     });  
   }
 
-  goToDetail():void {
+  goToDetail(project:Project):void {
+    this.onSelect(project);
     this.router.navigate(['/detail', this.selectedProject.id]);
   }
 }

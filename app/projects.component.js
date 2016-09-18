@@ -32,7 +32,8 @@ var ProjectsComponent = (function () {
             _this.projects = response;
         });
     };
-    ProjectsComponent.prototype.goToDetail = function () {
+    ProjectsComponent.prototype.goToDetail = function (project) {
+        this.onSelect(project);
         this.router.navigate(['/detail', this.selectedProject.id]);
     };
     ProjectsComponent = __decorate([
