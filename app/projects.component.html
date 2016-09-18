@@ -1,0 +1,13 @@
+<h2>My Projects</h2>
+<ul class="projects">
+  <li *ngFor="let project of projects" (click)="onSelect(project)" [class.selected]="project === selectedProject">
+    <!-- each project goes here -->
+    <span class="badge">{{project.id}}</span> {{project.title}}
+  </li>
+</ul>
+<div *ngIf="selectedProject">
+  <h2>
+    Selected: {{selectedProject.title | uppercase}}
+  </h2>
+  <button (click)="goToDetail()">View Details</button>
+</div>

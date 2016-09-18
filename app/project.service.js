@@ -9,28 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_heroes_1 = require('./mock-heroes');
-var HeroService = (function () {
-    function HeroService() {
+var mock_projects_1 = require('./mock-projects');
+var ProjectService = (function () {
+    function ProjectService() {
     }
-    HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(mock_heroes_1.HEROES);
+    ProjectService.prototype.getProjects = function () {
+        return Promise.resolve(mock_projects_1.PROJECTS);
     };
-    HeroService.prototype.getHeroesSlowly = function () {
+    ProjectService.prototype.getProjectsSlowly = function () {
         return new Promise(function (resolve) {
             return setTimeout(resolve, 2000);
         }) // delay 2 seconds
-            .then(this.getHeroes);
+            .then(this.getProjects);
     };
-    HeroService.prototype.getHero = function (id) {
-        return this.getHeroes()
-            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+    ProjectService.prototype.getProject = function (id) {
+        return this.getProjects()
+            .then(function (projects) { return projects.find(function (project) { return project.id === id; }); });
     };
-    HeroService = __decorate([
+    ProjectService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], HeroService);
-    return HeroService;
+    ], ProjectService);
+    return ProjectService;
 }());
-exports.HeroService = HeroService;
-//# sourceMappingURL=hero.service.js.map
+exports.ProjectService = ProjectService;
+//# sourceMappingURL=project.service.js.map

@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
-import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { ProjectsComponent } from './projects.component';
+import { ProjectDetailComponent } from './project-detail.component';
 
-import { HeroService } from './hero.service';
+import { ProjectService } from './project.service';
 import { routing } from './app.routing';
 
 // since this project is a web application that runs in the browser, 
@@ -23,11 +23,11 @@ import { routing } from './app.routing';
   declarations: [ 
     AppComponent,
     DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent
+    ProjectsComponent,
+    ProjectDetailComponent
   ],
   providers: [ 
-    HeroService
+    ProjectService
   ],
   bootstrap: [ AppComponent ],
 })

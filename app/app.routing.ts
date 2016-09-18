@@ -1,9 +1,10 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HeroesComponent } from './heroes.component';
+import { ProjectsComponent } from './projects.component';
 import { DashboardComponent } from './dashboard.component';
-import { HeroDetailComponent } from './hero-detail.component';
+import { ProjectDetailComponent } from './project-detail.component';
+import { AppComponent } from './app.component';
 
 const appRoutes:Routes = [
   {
@@ -17,12 +18,12 @@ const appRoutes:Routes = [
     component: DashboardComponent
   },
   {
-    path: 'heroes',
-    component: HeroesComponent
+    path: 'projects',
+    component: ProjectsComponent
   },
   {
     path: 'detail/:id',
-    component: HeroDetailComponent
+    component: ProjectDetailComponent
   }
 ];
 

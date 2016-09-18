@@ -14,9 +14,9 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
 var dashboard_component_1 = require('./dashboard.component');
-var heroes_component_1 = require('./heroes.component');
-var hero_detail_component_1 = require('./hero-detail.component');
-var hero_service_1 = require('./hero.service');
+var projects_component_1 = require('./projects.component');
+var project_detail_component_1 = require('./project-detail.component');
+var project_service_1 = require('./project.service');
 var app_routing_1 = require('./app.routing');
 // since this project is a web application that runs in the browser, 
 // must import the BrowserModule from @angular/platform-browser to the imports array
@@ -33,11 +33,11 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 dashboard_component_1.DashboardComponent,
-                heroes_component_1.HeroesComponent,
-                hero_detail_component_1.HeroDetailComponent
+                projects_component_1.ProjectsComponent,
+                project_detail_component_1.ProjectDetailComponent
             ],
             providers: [
-                hero_service_1.HeroService
+                project_service_1.ProjectService
             ],
             bootstrap: [app_component_1.AppComponent],
         }), 

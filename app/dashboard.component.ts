@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { HeroService } from './hero.service';
-import { Hero } from './hero';
+import { ProjectService } from './project.service';
+import { Project } from './project';
 
 @Component({
   selector: 'my-dashboard',
@@ -13,18 +13,18 @@ import { Hero } from './hero';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private heroService:HeroService,
+    private projectService:ProjectService,
     private router:Router) {}
 
   ngOnInit():void {
-    this.heroService.getHeroes()
-    .then(heroes => this.heroes = heroes.slice(1,5));
+    this.projectService.getProjects()
+    .then(projects => this.favorites = projects.slice(0,4));
   }
 
-  heroes:Hero[] = [];
+  favorites:Project[] = [];
 
-  goToDetail(hero:Hero):void {
-    let link = ['/detail', hero.id];
+  goToDetail(project:Project):void {
+    let link = ['/detail', project.id];
     this.router.navigate(link);
   }
 }

@@ -1,59 +1,32 @@
 <div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
+  <div class="site-wrapper-inner">
 
-        <div class="cover-container">
-          <img class="masthead-brand" src="images/mumfrog.png">
-          <div class="masthead clearfix">
-            <div class="inner">
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
-                  <li><a routerLink="/artsy" routerLinkActive="active">Artsy Stuff</a></li>
-                  <li><a routerLink="/about" routerLinkActive="active">About</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="inner cover">
-            <img class="center" src="images/frog770x400.jpg" alt="mumfrog">
-            <h1 class="cover-heading">Janet Hollier's Portfolio</h1>
-            <p class="lead">Welcome to my website!  Take a look around to see what I've been working on.</p>
-          </div>
-
-          <div class="clearfix">
-
-            <h1 class="page-header">Favorite Projects</h1>
-
-              <div class="row placeholders">
-                <div class="col-xs-6 col-sm-3 placeholder">
-                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive img-rounded" alt="Generic placeholder thumbnail">
-                  <h4>Label</h4>
-                  <span class="text-muted">Something else</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive img-rounded" alt="Generic placeholder thumbnail">
-                  <h4>Label</h4>
-                  <span class="text-muted">Something else</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive img-rounded" alt="Generic placeholder thumbnail">
-                  <h4>Label</h4>
-                  <span class="text-muted">Something else</span>
-                </div>
-                <div class="col-xs-6 col-sm-3 placeholder">
-                  <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive img-rounded" alt="Generic placeholder thumbnail">
-                  <h4>Label</h4>
-                  <span class="text-muted">Something else</span>
-                </div>
-              </div>
-          </div>
-
+    <div class="cover-container">
+      <img class="masthead-brand" src="images/mumfrog.png">
+      <div class="masthead clearfix">
+        <div class="inner">
+          <nav>
+            <ul class="nav masthead-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a>Projects</a></li>
+              <li><a>Artsy Stuff</a></li>
+              <li><a>About</a></li>
+            </ul>
+          </nav>
         </div>
-
       </div>
 
+      <div class="inner cover">
+        <img class="center" src="images/frog770x400.jpg" alt="mumfrog">
+        <h1 class="cover-heading">Janet Hollier's Portfolio</h1>
+        <p class="lead">Welcome to my website!  Take a look around to see what I've been working on.</p>
+      </div>
 
-    </div>
+    </div>  <!-- end cover-container -->
+
+    <router-outlet></router-outlet>
+
+  </div>  <!-- end site-wrapper-inner -->
+
+</div>  <!-- end site-wrapper -->
