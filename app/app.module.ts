@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
 import { DashboardComponent } from './dashboard.component';
 import { ProjectsComponent } from './projects.component';
 import { ProjectDetailComponent } from './project-detail.component';
@@ -22,6 +23,7 @@ import { routing } from './app.routing';
   ],
   declarations: [ 
     AppComponent,
+    HomeComponent,
     DashboardComponent,
     ProjectsComponent,
     ProjectDetailComponent

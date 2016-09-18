@@ -13,6 +13,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
+var home_component_1 = require('./home.component');
 var dashboard_component_1 = require('./dashboard.component');
 var projects_component_1 = require('./projects.component');
 var project_detail_component_1 = require('./project-detail.component');
@@ -32,6 +33,7 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
+                home_component_1.HomeComponent,
                 dashboard_component_1.DashboardComponent,
                 projects_component_1.ProjectsComponent,
                 project_detail_component_1.ProjectDetailComponent

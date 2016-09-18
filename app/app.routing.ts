@@ -1,6 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { HomeComponent } from './home.component';
 import { ProjectsComponent } from './projects.component';
 import { DashboardComponent } from './dashboard.component';
 import { ProjectDetailComponent } from './project-detail.component';
@@ -10,8 +11,12 @@ const appRoutes:Routes = [
   {
     // redirect
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/home',
     pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'dashboard',

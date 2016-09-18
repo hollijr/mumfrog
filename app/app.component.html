@@ -1,32 +1,13 @@
-<div class="site-wrapper">
-
-  <div class="site-wrapper-inner">
-
-    <div class="cover-container">
-      <img class="masthead-brand" src="images/mumfrog.png">
-      <div class="masthead clearfix">
-        <div class="inner">
-          <nav>
-            <ul class="nav masthead-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a>Projects</a></li>
-              <li><a>Artsy Stuff</a></li>
-              <li><a>About</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-
-      <div class="inner cover">
-        <img class="center" src="images/frog770x400.jpg" alt="mumfrog">
-        <h1 class="cover-heading">Janet Hollier's Portfolio</h1>
-        <p class="lead">Welcome to my website!  Take a look around to see what I've been working on.</p>
-      </div>
-
-    </div>  <!-- end cover-container -->
-
-    <router-outlet></router-outlet>
-
-  </div>  <!-- end site-wrapper-inner -->
-
-</div>  <!-- end site-wrapper -->
+<div class="masthead clearfix">
+  <div class="inner">
+    <nav>
+      <ul class="nav masthead-nav">
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
+        <li><a>Artsy Stuff</a></li>
+        <li><a>About</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>
