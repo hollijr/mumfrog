@@ -6,7 +6,7 @@ exports.PROJECTS = [
         description: "lorem ipsum", img: 'images/frog250.jpg', link: 'link' },
     { id: 13, title: 'BandBox Salon Web Site', technology: ['WordPress', 'JavaScript'], summary: 'A JavaScript web app',
         description: "lorem ipsum", img: 'images/frog250.jpg', link: 'link' },
-    { id: 14, title: 'Kent Swim & Tennic Club Web Site',
+    { id: 14, title: 'Kent Swim & Tennis Club Web Site',
         technology: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], summary: 'A JavaScript web app',
         description: "lorem ipsum", img: 'images/frog250.jpg', link: 'link' },
     { id: 15, title: 'Club Entry System', technology: ['Java'], summary: 'A JavaScript web app',

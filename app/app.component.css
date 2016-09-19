@@ -24,6 +24,13 @@ body {
   text-shadow: 0 1px 3px rgba(0,0,0,.25);
 }
 
+.masthead {
+  position: fixed;
+  background-color: #fff;
+  min-width: 100%;
+  padding: 0 10px;
+}
+
 .masthead-nav > li {
   display: inline-block;
 }
@@ -37,7 +44,7 @@ body {
   font-weight: bold;
   color: #333; /* IE8 proofing */
   color: rgba(30,30,30,.75);
-  border-bottom: 2px solid transparent;
+  border: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
@@ -46,6 +53,8 @@ body {
   border-color: rgba(5,89,30,.1);
   border-bottom: solid #666 1px;
   border-bottom: solid rgba(5,89,30,.25) 1px;
+  border-left-color: #a9a9a9;
+  border-left-color: rgba(255,255,255,.75);
   border-top-color: #a9a9a9;
   border-top-color: rgba(255,255,255,.5);
 }

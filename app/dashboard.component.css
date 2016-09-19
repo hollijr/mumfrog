@@ -23,6 +23,16 @@ h3 {
 h4 {
   position: relative;
 }
+
+.dashboard {
+  text-align: center;
+  padding: 15px 0;
+  margin: 30px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(to right, #fafafa, #fff, #fafafa);
+}
+
 .module:hover {
   background-color: #EEE;
   cursor: pointer;
@@ -34,6 +44,7 @@ h4 {
 .grid-pad > [class*='col-']:last-of-type {
   padding-right: 20px;
 }
+
 @media (max-width: 600px) {
     .module {
       font-size: 10px;
