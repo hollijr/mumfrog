@@ -1,31 +1,31 @@
 .selected {
-    background-color: #CFD8DC !important;
-    color: white;
-  }
-  .projects {
-    margin: 0 0 2em 0;
-    list-style-type: none;
-    padding: 0;
-  }
-  .projects li {
-    cursor: pointer;
-    position: relative;
-    left: 0;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    border-radius: 4px;
-  }
-  .projects li.selected:hover {
-    background-color: #BBD8DC !important;
-    color: white;
-  }
-  .projects li:hover {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.projects {
+  margin: 0 0 2em 0;
+  padding: 0;
+}
+.project {
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 4px;
+}
+.project.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.project:hover {
   color: #607D8B;
   background-color: #DDD;
-  left: .1em;
 }
-.projects .text {
-  position: relative;
-  top: -3px;
+.project-panel {
+  text-align: center;
+  margin: 0 auto;
+  background-color: #eee;
+  margin: 15px 0;
+  padding: 5px;
+}
+.project-panel img {
+  width: 100%;
 }
