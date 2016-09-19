@@ -27,6 +27,15 @@ body {
   padding: 0;
 }
 
+.navbar-toggle, .icon-bar {
+  z-index: 1000;
+  border: solid 1px #ccc;
+}
+
+.navbar-toggle {
+  float: left;
+}
+
 .masthead {
   position: fixed;
   background-color: #fff;
@@ -85,5 +94,18 @@ body {
 @media (min-width: 992px) {
   .masthead {
     width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .masthead {
+    padding: 0;
+    background-color: #fff;
+  }
+  .masthead li {
+    display: block;
+  }
+  .masthead-nav > li + li {
+    margin-left: 0px;
   }
 }

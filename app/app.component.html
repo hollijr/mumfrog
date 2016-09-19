@@ -1,6 +1,18 @@
 <div class="container-fluid">
   <div class="masthead clearfix">
-    <nav>
+    <div class="navbar-header container">
+      <div class="col-xs-12"> <!-- styling so hamburger menu lines up with content container -->
+        <!-- make it responsive -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>  <!-- for screen readers -->
+          <!-- draw the drawer indicator -->
+          <span class="icon-bar"></span>  
+          <span class="icon-bar"></span> 
+          <span class="icon-bar"></span>  
+        </button>
+        </div>
+    </div>
+    <nav id="navbar" class="collapse navbar-collapse">
       <ul class="nav masthead-nav">
         <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
         <li><a routerLink="/projects" routerLinkActive="active">Projects</a></li>
