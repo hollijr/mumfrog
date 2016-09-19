@@ -21,9 +21,8 @@ body {
 body {
   color: #fff;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  text-shadow: 0 1px 3px rgba(0,0,0,.25);
 }
-
 
 .masthead-nav > li {
   display: inline-block;
@@ -36,21 +35,19 @@ body {
   padding-left: 1em;
   font-size: 16px;
   font-weight: bold;
-  color: #000; /* IE8 proofing */
+  color: #333; /* IE8 proofing */
   color: rgba(30,30,30,.75);
   border-bottom: 2px solid transparent;
 }
 .masthead-nav > li > a:hover,
 .masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #000;
-  border-bottom-color: #fff;
+  background-color: rgba(9,180,13,.5);
+  border: solid #368808 2px;
+  border-color: rgba(5,89,30,.1);
+  border-bottom: solid #666 1px;
+  border-bottom: solid rgba(5,89,30,.25) 1px;
+  border-top-color: #a9a9a9;
+  border-top-color: rgba(255,255,255,.5);
 }
 
 @media (min-width: 768px) {
@@ -60,23 +57,11 @@ body {
 }
 
 
-
 /*
  * Affix and center
  */
 
 @media (min-width: 768px) {
-  /* Pull out the header and footer 
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  */ 
-
   /* Handle the widths */
   .masthead {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
