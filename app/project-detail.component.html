@@ -1,6 +1,6 @@
 <div *ngIf="project" class="container">
   <div class="row project-detail">
-    <div class='col-xs-12 col-sm-4'>
+    <div class='col-xs-12 col-sm-4 sidebar'>
       <figure>
         <img class='sidebar-img' [src]="project.img">
         <figcaption>
@@ -12,11 +12,12 @@
         <li *ngFor="let tech of project.technology" class="technology">{{tech}}</li>
       </ul>
     </div>
-    <div class='col-xs-12 col-sm-8'>
+    <div class='col-xs-12 col-sm-8 content'>
       <h1>{{project.title}}</h1>
       <div class='desc'>{{project.description}}</div>
     </div>
   </div>
-  <div class='demo'>
+  <hr>
+  <div class='row demo'>
   </div>
 </div>
