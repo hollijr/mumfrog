@@ -1,9 +1,22 @@
-<div *ngIf="project">
-  <h2>{{project.title}} details!</h2>
-  <div><label>id: </label>{{project.id}}</div>
-  <div>
-    <label>title: </label>
-    <input [(ngModel)]="project.title" placeholder="title">
+<div *ngIf="project" class="container">
+  <div class="row project-detail">
+    <div class='col-xs-12 col-sm-4'>
+      <figure>
+        <img class='sidebar-img' [src]="project.img">
+        <figcaption>
+          <button (click)="goBack()" class="btn btn-primary">Back</button>
+        </figcaption>
+      </figure>
+      <h3>Technology</h3>
+      <ul>
+        <li *ngFor="let tech of project.technology" class="technology">{{tech}}</li>
+      </ul>
+    </div>
+    <div class='col-xs-12 col-sm-8'>
+      <h1>{{project.title}}</h1>
+      <pre class='desc'>{{project.description}}</pre>
+    </div>
   </div>
-  <button (click)="goBack()">Back</button>
+  <div class='demo'>
+  </div>
 </div>
