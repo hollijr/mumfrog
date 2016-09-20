@@ -58,3 +58,8 @@ h4 {
       min-width: 60px;
     }
 }
+@media (max-width: 767px) {
+  .col-xs-6:nth-of-type(2n + 1) {
+    clear:left;
+  }
+}
