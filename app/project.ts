@@ -3,7 +3,10 @@ export class Project {
   title:string;
   technology:string[];
   summary:string;
-  description:string;
-  link:string;
+  description:string[];
+  component:string;
+  demo:string;
+  demoLink:string;
+  codeRepo:string;
   img:string;
 }
