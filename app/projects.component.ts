@@ -27,6 +27,11 @@ export class ProjectsComponent implements OnInit {
 
   selectedProject:Project;
   projects:Project[];
+  innerWidth:number = window.innerWidth;
+
+  onResize(event) {
+    event.target.innerWith;
+  }
 
   onSelect(project:Project): void {
     this.selectedProject = project;
@@ -43,4 +48,5 @@ export class ProjectsComponent implements OnInit {
     this.onSelect(project);
     this.router.navigate(['/detail', this.selectedProject.id]);
   }
+
 }

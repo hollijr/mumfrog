@@ -18,9 +18,13 @@ var ProjectsComponent = (function () {
     function ProjectsComponent(projectService, router) {
         this.projectService = projectService;
         this.router = router;
+        this.innerWidth = window.innerWidth;
     }
     ProjectsComponent.prototype.ngOnInit = function () {
         this.getProjects();
+    };
+    ProjectsComponent.prototype.onResize = function (event) {
+        event.target.innerWith;
     };
     ProjectsComponent.prototype.onSelect = function (project) {
         this.selectedProject = project;
