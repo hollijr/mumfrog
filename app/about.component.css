@@ -2,19 +2,11 @@
   margin-top: 10px;
   padding-top: 10px;
 }
-.sidebar {
-  border-right: solid 1px #eee;
-}
-.sidebar-img {
-  width: 100%;
-}
-
-.project-detail {
-  margin: 0 0 2em 0;
-  padding: 0;
+.logo {
+  cursor: pointer;
+  cursor: hand;
 }
 .content {
-  border-left: solid 1px #eee;
   padding: 20px;
   position: relative;
   margin-left: -1px;  /* so border lines up with border from sidebar */

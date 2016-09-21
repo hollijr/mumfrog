@@ -17,8 +17,10 @@ var home_component_1 = require('./home.component');
 var dashboard_component_1 = require('./dashboard.component');
 var projects_component_1 = require('./projects.component');
 var project_detail_component_1 = require('./project-detail.component');
+var artworks_component_1 = require('./artworks.component');
 var about_component_1 = require('./about.component');
 var project_service_1 = require('./project.service');
+var artwork_service_1 = require('./artwork.service');
 var app_routing_1 = require('./app.routing');
 // since this project is a web application that runs in the browser, 
 // must import the BrowserModule from @angular/platform-browser to the imports array
@@ -38,10 +40,12 @@ var AppModule = (function () {
                 dashboard_component_1.DashboardComponent,
                 projects_component_1.ProjectsComponent,
                 project_detail_component_1.ProjectDetailComponent,
+                artworks_component_1.ArtworksComponent,
                 about_component_1.AboutComponent
             ],
             providers: [
-                project_service_1.ProjectService
+                project_service_1.ProjectService,
+                artwork_service_1.ArtworkService
             ],
             bootstrap: [app_component_1.AppComponent],
         }), 

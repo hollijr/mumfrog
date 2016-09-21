@@ -5,7 +5,12 @@ import { COOKIES } from './mock-cookies';
 
 @Injectable ()
 
-export class ArtWorkService {
+export class ArtworkService {
+
+  getArtworks():Promise<Art[]> {
+    return Promise.resolve(COOKIES);  // append all data together
+  }
+
   getCookies():Promise<Art[]> {
     return Promise.resolve(COOKIES);
   }
@@ -14,8 +19,10 @@ export class ArtWorkService {
       setTimeout(resolve, 2000)) // delay 2 seconds
       .then(this.getCookies);
   }
-  getArtWork(id:number):Promise<Art> {
-    if (id < 1000) {
+
+  getArtwork(id:number):Promise<Art> {
+    let sid = id.toString();
+    if ( sid.charAt(0) === '1') {  // Cookie
       return this.getCookies()
                 .then(cookies => cookies.find(cookie => cookie.id === id));
     }

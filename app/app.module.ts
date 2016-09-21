@@ -9,9 +9,11 @@ import { HomeComponent } from './home.component';
 import { DashboardComponent } from './dashboard.component';
 import { ProjectsComponent } from './projects.component';
 import { ProjectDetailComponent } from './project-detail.component';
+import { ArtworksComponent } from './artworks.component';
 import { AboutComponent } from './about.component';
 
 import { ProjectService } from './project.service';
+import { ArtworkService } from './artwork.service';
 import { routing } from './app.routing';
 
 // since this project is a web application that runs in the browser, 
@@ -28,10 +30,12 @@ import { routing } from './app.routing';
     DashboardComponent,
     ProjectsComponent,
     ProjectDetailComponent,
+    ArtworksComponent,
     AboutComponent
   ],
   providers: [ 
-    ProjectService
+    ProjectService,
+    ArtworkService
   ],
   bootstrap: [ AppComponent ],
 })

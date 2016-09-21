@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="col-xs-12">
+    <h2>My Artworks</h2>
+    <div class="projects clearfix">
+      <div class="row grid grid-pad">
+        <div *ngFor="let artwork of artworks" (click)="goToDetail(artwork)" [class.selected]="artwork === selectedArtwork" class="col-xs-6 col-sm-4 col-md-3 project">
+          <div class="panel project-panel">
+            <img [src]="artwork.img" width="200" height="200" class="img-responsive img-rounded" alt="Generic placeholder thumbnail">
+            <h4>{{project.title}}</h4>
+            <span class="text-muted">{{artwork.summary}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

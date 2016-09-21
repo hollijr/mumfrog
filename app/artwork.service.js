@@ -10,31 +10,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mock_cookies_1 = require('./mock-cookies');
-var ArtWorkService = (function () {
-    function ArtWorkService() {
+var ArtworkService = (function () {
+    function ArtworkService() {
     }
-    ArtWorkService.prototype.getCookies = function () {
+    ArtworkService.prototype.getArtworks = function () {
+        return Promise.resolve(mock_cookies_1.COOKIES); // append all data together
+    };
+    ArtworkService.prototype.getCookies = function () {
         return Promise.resolve(mock_cookies_1.COOKIES);
     };
-    ArtWorkService.prototype.getCookiesSlowly = function () {
+    ArtworkService.prototype.getCookiesSlowly = function () {
         return new Promise(function (resolve) {
             return setTimeout(resolve, 2000);
         }) // delay 2 seconds
             .then(this.getCookies);
     };
-    ArtWorkService.prototype.getArtWork = function (id) {
-        if (id < 1000) {
+    ArtworkService.prototype.getArtwork = function (id) {
+        var sid = id.toString();
+        if (sid.charAt(0) === '1') {
             return this.getCookies()
                 .then(function (cookies) { return cookies.find(function (cookie) { return cookie.id === id; }); });
         }
         return this.getCookies()
             .then(function (cookies) { return cookies.find(function (cookie) { return cookie.id === id; }); });
     };
-    ArtWorkService = __decorate([
+    ArtworkService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], ArtWorkService);
-    return ArtWorkService;
+    ], ArtworkService);
+    return ArtworkService;
 }());
-exports.ArtWorkService = ArtWorkService;
+exports.ArtworkService = ArtworkService;
 //# sourceMappingURL=artwork.service.js.map
