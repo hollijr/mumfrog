@@ -17,6 +17,7 @@ var home_component_1 = require('./home.component');
 var dashboard_component_1 = require('./dashboard.component');
 var projects_component_1 = require('./projects.component');
 var project_detail_component_1 = require('./project-detail.component');
+var about_component_1 = require('./about.component');
 var project_service_1 = require('./project.service');
 var app_routing_1 = require('./app.routing');
 // since this project is a web application that runs in the browser, 
@@ -36,7 +37,8 @@ var AppModule = (function () {
                 home_component_1.HomeComponent,
                 dashboard_component_1.DashboardComponent,
                 projects_component_1.ProjectsComponent,
-                project_detail_component_1.ProjectDetailComponent
+                project_detail_component_1.ProjectDetailComponent,
+                about_component_1.AboutComponent
             ],
             providers: [
                 project_service_1.ProjectService

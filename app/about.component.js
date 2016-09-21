@@ -10,43 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var project_service_1 = require('./project.service'); // model
 // view
 var AboutComponent = (function () {
-    // this constructor adds a private property that is of type projectService to the 
-    // AppComponent class. It's a projectService injection site.
-    function AboutComponent(projectService, router) {
-        this.projectService = projectService;
+    function AboutComponent(router) {
         this.router = router;
-        this.innerWidth = window.innerWidth;
     }
-    AboutComponent.prototype.ngOnInit = function () {
-        this.getProjects();
-    };
-    AboutComponent.prototype.onResize = function (event) {
-        event.target.innerWith;
-    };
-    AboutComponent.prototype.onSelect = function (project) {
-        this.selectedProject = project;
-    };
-    AboutComponent.prototype.getProjects = function () {
-        var _this = this;
-        // simulate server response delay using getprojectesSlowly() instead of getprojectes()
-        this.projectService.getProjects().then(function (response) {
-            _this.projects = response;
-        });
-    };
-    AboutComponent.prototype.goToDetail = function (project) {
-        this.onSelect(project);
-        this.router.navigate(['/detail', this.selectedProject.id]);
+    AboutComponent.prototype.goHome = function () {
+        this.router.navigate(['/home']);
     };
     AboutComponent = __decorate([
         core_1.Component({
-            selector: 'my-projects',
-            templateUrl: 'app/projects.component.html',
-            styleUrls: ['app/projects.component.css']
+            selector: 'my-about',
+            templateUrl: 'app/about.component.html',
+            styleUrls: ['app/about.component.css']
         }), 
-        __metadata('design:paramtypes', [project_service_1.ProjectService, router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router])
     ], AboutComponent);
     return AboutComponent;
 }());

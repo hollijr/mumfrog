@@ -4,6 +4,7 @@ var home_component_1 = require('./home.component');
 var projects_component_1 = require('./projects.component');
 var dashboard_component_1 = require('./dashboard.component');
 var project_detail_component_1 = require('./project-detail.component');
+var about_component_1 = require('./about.component');
 var appRoutes = [
     {
         // redirect
@@ -26,6 +27,10 @@ var appRoutes = [
     {
         path: 'detail/:id',
         component: project_detail_component_1.ProjectDetailComponent
+    },
+    {
+        path: 'about',
+        component: about_component_1.AboutComponent
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);

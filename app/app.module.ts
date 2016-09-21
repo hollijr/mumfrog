@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 import { DashboardComponent } from './dashboard.component';
 import { ProjectsComponent } from './projects.component';
 import { ProjectDetailComponent } from './project-detail.component';
+import { AboutComponent } from './about.component';
 
 import { ProjectService } from './project.service';
 import { routing } from './app.routing';
@@ -26,7 +27,8 @@ import { routing } from './app.routing';
     HomeComponent,
     DashboardComponent,
     ProjectsComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    AboutComponent
   ],
   providers: [ 
     ProjectService
