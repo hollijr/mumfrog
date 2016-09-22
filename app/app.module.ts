@@ -14,6 +14,7 @@ import { AboutComponent } from './about.component';
 
 import { ProjectService } from './project.service';
 import { ArtworkService } from './artwork.service';
+import { CategoryService } from './category.service';
 import { routing } from './app.routing';
 
 // since this project is a web application that runs in the browser, 
@@ -35,7 +36,8 @@ import { routing } from './app.routing';
   ],
   providers: [ 
     ProjectService,
-    ArtworkService
+    ArtworkService,
+    CategoryService
   ],
   bootstrap: [ AppComponent ],
 })

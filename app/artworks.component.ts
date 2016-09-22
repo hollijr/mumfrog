@@ -18,7 +18,6 @@ import { OnInit } from '@angular/core';
 export class ArtworksComponent implements OnInit {
 
   ngOnInit():void {
-    this.getCategories();
     this.getArtworks();  
   }
   // this constructor adds a private property that is of type projectService to the 
@@ -30,7 +29,7 @@ export class ArtworksComponent implements OnInit {
 
   categories:Category[];
   selectedArtwork:Art;
-  artworks:Art[];
+  artworks:[Art[]];
   innerWidth:number = window.innerWidth;
 
   onResize(event) {
@@ -41,21 +40,13 @@ export class ArtworksComponent implements OnInit {
     this.selectedArtwork = artwork;
   }
 
-  getCategories() {
+  getArtworks():void {
     this.categoryService.getCategories().then((response) => {
       this.categories = response;
-      return response;
+      this.artworkService.getArtworks().then((result) => {
+        this.artworks = result;
+      });
     });
-  }
-
-  getArtworks():void {
-    this.getCategories().then((categories) => {
-
-    })
-    // simulate server response delay using getprojectesSlowly() instead of getprojectes()
-    this.artworkService.getArtworks().then((response) => {
-      this.artworks = response;
-    });  
   }
 
   goToDetail(artwork:Art):void {

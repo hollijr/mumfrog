@@ -23,7 +23,6 @@ var ArtworksComponent = (function () {
         this.innerWidth = window.innerWidth;
     }
     ArtworksComponent.prototype.ngOnInit = function () {
-        this.getCategories();
         this.getArtworks();
     };
     ArtworksComponent.prototype.onResize = function (event) {
@@ -32,20 +31,13 @@ var ArtworksComponent = (function () {
     ArtworksComponent.prototype.onSelect = function (artwork) {
         this.selectedArtwork = artwork;
     };
-    ArtworksComponent.prototype.getCategories = function () {
+    ArtworksComponent.prototype.getArtworks = function () {
         var _this = this;
         this.categoryService.getCategories().then(function (response) {
             _this.categories = response;
-            return response;
-        });
-    };
-    ArtworksComponent.prototype.getArtworks = function () {
-        var _this = this;
-        this.getCategories().then(function (categories) {
-        });
-        // simulate server response delay using getprojectesSlowly() instead of getprojectes()
-        this.artworkService.getArtworks().then(function (response) {
-            _this.artworks = response;
+            _this.artworkService.getArtworks().then(function (result) {
+                _this.artworks = result;
+            });
         });
     };
     ArtworksComponent.prototype.goToDetail = function (artwork) {

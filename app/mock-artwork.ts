@@ -1,4 +1,4 @@
-import {Art} from './art';
+import { Art } from './art';
 
 export const ARTWORK:[Art[]] = [
   [

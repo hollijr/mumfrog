@@ -38,7 +38,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   getProjects():void {
-    // simulate server response delay using getprojectesSlowly() instead of getprojectes()
+    // simulate server response delay using getprojectesSlowly() instead of getprojects()
     this.projectService.getProjects().then((response) => {
       this.projects = response;
     });  

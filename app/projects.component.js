@@ -31,7 +31,7 @@ var ProjectsComponent = (function () {
     };
     ProjectsComponent.prototype.getProjects = function () {
         var _this = this;
-        // simulate server response delay using getprojectesSlowly() instead of getprojectes()
+        // simulate server response delay using getprojectesSlowly() instead of getprojects()
         this.projectService.getProjects().then(function (response) {
             _this.projects = response;
         });

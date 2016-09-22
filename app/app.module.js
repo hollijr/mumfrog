@@ -21,6 +21,7 @@ var artworks_component_1 = require('./artworks.component');
 var about_component_1 = require('./about.component');
 var project_service_1 = require('./project.service');
 var artwork_service_1 = require('./artwork.service');
+var category_service_1 = require('./category.service');
 var app_routing_1 = require('./app.routing');
 // since this project is a web application that runs in the browser, 
 // must import the BrowserModule from @angular/platform-browser to the imports array
@@ -45,7 +46,8 @@ var AppModule = (function () {
             ],
             providers: [
                 project_service_1.ProjectService,
-                artwork_service_1.ArtworkService
+                artwork_service_1.ArtworkService,
+                category_service_1.CategoryService
             ],
             bootstrap: [app_component_1.AppComponent],
         }), 

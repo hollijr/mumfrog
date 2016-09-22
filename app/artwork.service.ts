@@ -8,7 +8,7 @@ import { ARTWORK } from './mock-artwork';
 
 export class ArtworkService {
 
-  getArtworks():Promise<any> {
+  getArtworks():Promise<[Art[]]> {
     return Promise.resolve(ARTWORK);  // returns an array of artwork arrays
   }
 
