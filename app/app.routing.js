@@ -8,12 +8,6 @@ var artworks_component_1 = require('./artworks.component');
 var about_component_1 = require('./about.component');
 var appRoutes = [
     {
-        // redirect
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    },
-    {
         path: 'home',
         component: home_component_1.HomeComponent
     },
@@ -36,6 +30,12 @@ var appRoutes = [
     {
         path: 'about',
         component: about_component_1.AboutComponent
+    },
+    {
+        // redirect
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full'
     }
 ];
 exports.routing = router_1.RouterModule.forRoot(appRoutes);

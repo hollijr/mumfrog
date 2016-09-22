@@ -1,9 +1,13 @@
 <div class="container">
   <div class="col-xs-12">
     <h2>My Artworks</h2>
+    <ul class="goto">
+      <li *ngFor="let cat of categories" (click)="goToCategory(cat)">{{cat.name}}</li>
+    </ul>
     <div class="projects clearfix">
       <div *ngFor="let cat of categories" class="row grid grid-pad">
-        <h3>{{cat.name}}</h3>
+        <hr>
+        <a id="{{cat.name}}" ><h3>{{cat.name}}</h3></a>
         <div *ngFor="let artwork of artworks[cat.id-1]" (click)="goToDetail(artwork)" [class.selected]="artwork === selectedArtwork" class="col-xs-6 col-sm-4 col-md-3 project">
           <div class="panel project-panel">
             <img [src]="artwork.img" width="200" height="200" class="img-responsive img-rounded" alt="Generic placeholder thumbnail">

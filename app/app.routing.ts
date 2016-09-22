@@ -11,12 +11,6 @@ import { AboutComponent } from './about.component';
 
 const appRoutes:Routes = [
   {
-    // redirect
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
-  {
     path: 'home',
     component: HomeComponent
   },
@@ -39,6 +33,12 @@ const appRoutes:Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    // redirect
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
   }
 ];
 

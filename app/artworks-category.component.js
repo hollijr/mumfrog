@@ -13,51 +13,43 @@ var router_1 = require('@angular/router');
 var artwork_service_1 = require('./artwork.service'); // model
 var category_service_1 = require('./category.service');
 // view
-var ArtworksComponent = (function () {
+var ArtworksCategoryComponent = (function () {
     // this constructor adds a private property that is of type projectService to the 
     // AppComponent class. It's a projectService injection site.
-    function ArtworksComponent(artworkService, categoryService, router, route) {
+    function ArtworksCategoryComponent(artworkService, categoryService, router, route) {
         this.artworkService = artworkService;
         this.categoryService = categoryService;
         this.router = router;
         this.route = route;
         this.innerWidth = window.innerWidth;
     }
-    ArtworksComponent.prototype.ngOnInit = function () {
-        this.getArtworks();
-    };
-    ArtworksComponent.prototype.onResize = function (event) {
-        event.target.innerWith;
-    };
-    ArtworksComponent.prototype.onSelect = function (artwork) {
-        this.selectedArtwork = artwork;
-    };
-    ArtworksComponent.prototype.getArtworks = function () {
+    ArtworksCategoryComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.categoryService.getCategories().then(function (response) {
-            _this.categories = response;
-            _this.artworkService.getArtworks().then(function (result) {
-                _this.artworks = result;
-            });
+        this.route.params.forEach(function (params) {
+            var cat = +params['category']; // TODO: check syntax
+            _this.artworkService.getSubset(cat)
+                .then(function (artworks) { return _this.artworks = artworks; });
         });
     };
-    ArtworksComponent.prototype.goToCategory = function (category) {
-        this.selectedCategory = category;
-        this.router.navigate(['category.name'], { relativeTo: this.route });
+    ArtworksCategoryComponent.prototype.onResize = function (event) {
+        event.target.innerWith;
     };
-    ArtworksComponent.prototype.goToDetail = function (artwork) {
+    ArtworksCategoryComponent.prototype.onSelect = function (artwork) {
+        this.selectedArtwork = artwork;
+    };
+    ArtworksCategoryComponent.prototype.goToDetail = function (artwork) {
         this.onSelect(artwork);
         this.router.navigate(['/artwork', this.selectedArtwork.id]);
     };
-    ArtworksComponent = __decorate([
+    ArtworksCategoryComponent = __decorate([
         core_1.Component({
-            selector: 'my-artworks',
-            templateUrl: 'app/artworks.component.html',
-            styleUrls: ['app/artworks.component.css']
+            selector: 'my-artworks-category',
+            templateUrl: 'app/artworks-category.component.html',
+            styleUrls: ['app/artworks-category.component.css']
         }), 
         __metadata('design:paramtypes', [artwork_service_1.ArtworkService, category_service_1.CategoryService, router_1.Router, router_1.ActivatedRoute])
-    ], ArtworksComponent);
-    return ArtworksComponent;
+    ], ArtworksCategoryComponent);
+    return ArtworksCategoryComponent;
 }());
-exports.ArtworksComponent = ArtworksComponent;
-//# sourceMappingURL=artworks.component.js.map
+exports.ArtworksCategoryComponent = ArtworksCategoryComponent;
+//# sourceMappingURL=artworks-category.component.js.map

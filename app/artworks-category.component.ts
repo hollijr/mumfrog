@@ -9,17 +9,22 @@ import { OnInit } from '@angular/core';
 
 // view
 @Component({
-  selector: 'my-artworks',
-  templateUrl: 'app/artworks.component.html',
-  styleUrls: [ 'app/artworks.component.css' ]
+  selector: 'my-artworks-category',
+  templateUrl: 'app/artworks-category.component.html',
+  styleUrls: [ 'app/artworks-category.component.css' ]
 })
 
 // controller
-export class ArtworksComponent implements OnInit {
+export class ArtworksCategoryComponent implements OnInit {
 
-  ngOnInit():void {
-    this.getArtworks();  
+  ngOnInit():void { 
+    this.route.params.forEach((params:Params) => {
+      let cat = +params['category'];  // TODO: check syntax
+      this.artworkService.getSubset(cat)
+      .then(artworks => this.artworks = artworks);
+    });
   }
+
   // this constructor adds a private property that is of type projectService to the 
   // AppComponent class. It's a projectService injection site.
   constructor(
@@ -28,10 +33,9 @@ export class ArtworksComponent implements OnInit {
     private router:Router,
     private route:ActivatedRoute) { }
 
-  categories:Category[];
-  selectedCategory:Category;
+  category:Category;
   selectedArtwork:Art;
-  artworks:[Art[]];
+  artworks:Art[];
   innerWidth:number = window.innerWidth;
 
   onResize(event) {
@@ -40,20 +44,6 @@ export class ArtworksComponent implements OnInit {
 
   onSelect(artwork:Art): void {
     this.selectedArtwork = artwork;
-  }
-
-  getArtworks():void {
-    this.categoryService.getCategories().then((response) => {
-      this.categories = response;
-      this.artworkService.getArtworks().then((result) => {
-        this.artworks = result;
-      });
-    });
-  }
-
-  goToCategory(category:Category):void {
-    this.selectedCategory = category;
-    this.router.navigate(['category.name'], { relativeTo: this.route });
   }
 
   goToDetail(artwork:Art):void {
