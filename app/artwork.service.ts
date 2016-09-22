@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
 
 import { Art } from './art';
-import { COOKIES } from './mock-cookies';
+import { ARTWORK } from './mock-artwork';
+
 
 @Injectable ()
 
 export class ArtworkService {
 
-  getArtworks():Promise<Art[]> {
-    return Promise.resolve(COOKIES);  // append all data together
+  getArtworks():Promise<any> {
+    return Promise.resolve(ARTWORK);  // returns an array of artwork arrays
   }
 
-  getCookies():Promise<Art[]> {
-    return Promise.resolve(COOKIES);
-  }
-  getCookiesSlowly():Promise<Art[]> {
-    return new Promise<Art[]>(resolve =>
-      setTimeout(resolve, 2000)) // delay 2 seconds
-      .then(this.getCookies);
+  getSubset(category:number):Promise<Art[]> {
+    return Promise.resolve(ARTWORK[category]);
   }
 
   getArtwork(id:number):Promise<Art> {
-    let sid = id.toString();
-    if ( sid.charAt(0) === '1') {  // Cookie
-      return this.getCookies()
-                .then(cookies => cookies.find(cookie => cookie.id === id));
+    let n = id, x = 1;
+    // find first digit of id
+    while (n > 1) {
+      n /= 10;  
+      x *= 10;
     }
-    return this.getCookies()
-                .then(cookies => cookies.find(cookie => cookie.id === id));
+    n = id % x;
+    
+    return this.getSubset(n-1)
+                .then(subset => subset.find(art => art.id === id));
   }
 }

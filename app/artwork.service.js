@@ -9,30 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_cookies_1 = require('./mock-cookies');
+var mock_artwork_1 = require('./mock-artwork');
 var ArtworkService = (function () {
     function ArtworkService() {
     }
     ArtworkService.prototype.getArtworks = function () {
-        return Promise.resolve(mock_cookies_1.COOKIES); // append all data together
+        return Promise.resolve(mock_artwork_1.ARTWORK); // returns an array of artwork arrays
     };
-    ArtworkService.prototype.getCookies = function () {
-        return Promise.resolve(mock_cookies_1.COOKIES);
-    };
-    ArtworkService.prototype.getCookiesSlowly = function () {
-        return new Promise(function (resolve) {
-            return setTimeout(resolve, 2000);
-        }) // delay 2 seconds
-            .then(this.getCookies);
+    ArtworkService.prototype.getSubset = function (category) {
+        return Promise.resolve(mock_artwork_1.ARTWORK[category]);
     };
     ArtworkService.prototype.getArtwork = function (id) {
-        var sid = id.toString();
-        if (sid.charAt(0) === '1') {
-            return this.getCookies()
-                .then(function (cookies) { return cookies.find(function (cookie) { return cookie.id === id; }); });
+        var n = id, x = 1;
+        // find first digit of id
+        while (n > 1) {
+            n /= 10;
+            x *= 10;
         }
-        return this.getCookies()
-            .then(function (cookies) { return cookies.find(function (cookie) { return cookie.id === id; }); });
+        n = id % x;
+        return this.getSubset(n - 1)
+            .then(function (subset) { return subset.find(function (art) { return art.id === id; }); });
     };
     ArtworkService = __decorate([
         core_1.Injectable(), 

@@ -11,16 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var artwork_service_1 = require('./artwork.service'); // model
+var category_service_1 = require('./category.service');
 // view
 var ArtworksComponent = (function () {
     // this constructor adds a private property that is of type projectService to the 
     // AppComponent class. It's a projectService injection site.
-    function ArtworksComponent(artworkService, router) {
+    function ArtworksComponent(artworkService, categoryService, router) {
         this.artworkService = artworkService;
+        this.categoryService = categoryService;
         this.router = router;
         this.innerWidth = window.innerWidth;
     }
     ArtworksComponent.prototype.ngOnInit = function () {
+        this.getCategories();
         this.getArtworks();
     };
     ArtworksComponent.prototype.onResize = function (event) {
@@ -29,8 +32,17 @@ var ArtworksComponent = (function () {
     ArtworksComponent.prototype.onSelect = function (artwork) {
         this.selectedArtwork = artwork;
     };
+    ArtworksComponent.prototype.getCategories = function () {
+        var _this = this;
+        this.categoryService.getCategories().then(function (response) {
+            _this.categories = response;
+            return response;
+        });
+    };
     ArtworksComponent.prototype.getArtworks = function () {
         var _this = this;
+        this.getCategories().then(function (categories) {
+        });
         // simulate server response delay using getprojectesSlowly() instead of getprojectes()
         this.artworkService.getArtworks().then(function (response) {
             _this.artworks = response;
@@ -46,7 +58,7 @@ var ArtworksComponent = (function () {
             templateUrl: 'app/artworks.component.html',
             styleUrls: ['app/artworks.component.css']
         }), 
-        __metadata('design:paramtypes', [artwork_service_1.ArtworkService, router_1.Router])
+        __metadata('design:paramtypes', [artwork_service_1.ArtworkService, category_service_1.CategoryService, router_1.Router])
     ], ArtworksComponent);
     return ArtworksComponent;
 }());
