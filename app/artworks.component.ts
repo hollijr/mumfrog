@@ -26,7 +26,7 @@ export class ArtworksComponent implements OnInit {
           // you can use DomAdapter
           const element = document.querySelector("#" + frag);
           if (element) { 
-            element.scrollIntoView(true); 
+            element.scrollIntoView(true);  // experimental method
           }
         }
     }); 

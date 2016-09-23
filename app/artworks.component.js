@@ -33,7 +33,7 @@ var ArtworksComponent = (function () {
                 // you can use DomAdapter
                 var element = document.querySelector("#" + frag);
                 if (element) {
-                    element.scrollIntoView(true);
+                    element.scrollIntoView(true); // experimental method
                 }
             }
         });

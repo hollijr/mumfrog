@@ -2,8 +2,31 @@
   background-color: #CFD8DC !important;
   color: white;
 }
+.goto {
+  padding-left: 0;
+}
+.goto li {
+  display: inline;
+  margin-right: 2em;
+}
+.goto a:hover {
+    text-decoration: none;
+}
+.anchor {
+  color: #000;
+}
+.anchor:hover {
+  text-decoration: none;
+}
+.to-top {
+  clear: both;
+  margin-top: 5px;
+}
+.to-top a:hover {
+  text-decoration: none;
+}
 .projects {
-  margin: 0 0 2em 0;
+  margin: 0 0 2em 1em;
   padding: 0;
 }
 .project {
