@@ -18,7 +18,18 @@ import { OnInit } from '@angular/core';
 export class ArtworksComponent implements OnInit {
 
   ngOnInit():void {
-    this.getArtworks();  
+    this.getArtworks(); 
+    this.route.fragment.forEach((frag: string) => {
+      this.fragment = frag;
+      console.log(frag);
+      if (frag) {
+          // you can use DomAdapter
+          const element = document.querySelector("#" + frag);
+          if (element) { 
+            element.scrollIntoView(true); 
+          }
+        }
+    }); 
   }
   // this constructor adds a private property that is of type projectService to the 
   // AppComponent class. It's a projectService injection site.
@@ -33,6 +44,7 @@ export class ArtworksComponent implements OnInit {
   selectedArtwork:Art;
   artworks:[Art[]];
   innerWidth:number = window.innerWidth;
+  fragment:string;
 
   onResize(event) {
     event.target.innerWith;
@@ -53,7 +65,7 @@ export class ArtworksComponent implements OnInit {
 
   goToCategory(category:Category):void {
     this.selectedCategory = category;
-    this.router.navigate(['category.name'], { relativeTo: this.route });
+    this.router.navigate(['.'], { relativeTo: this.route, fragment: category.name });
   }
 
   goToDetail(artwork:Art):void {

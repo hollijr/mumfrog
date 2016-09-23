@@ -24,7 +24,19 @@ var ArtworksComponent = (function () {
         this.innerWidth = window.innerWidth;
     }
     ArtworksComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.getArtworks();
+        this.route.fragment.forEach(function (frag) {
+            _this.fragment = frag;
+            console.log(frag);
+            if (frag) {
+                // you can use DomAdapter
+                var element = document.querySelector("#" + frag);
+                if (element) {
+                    element.scrollIntoView(true);
+                }
+            }
+        });
     };
     ArtworksComponent.prototype.onResize = function (event) {
         event.target.innerWith;
@@ -43,7 +55,7 @@ var ArtworksComponent = (function () {
     };
     ArtworksComponent.prototype.goToCategory = function (category) {
         this.selectedCategory = category;
-        this.router.navigate(['category.name'], { relativeTo: this.route });
+        this.router.navigate(['.'], { relativeTo: this.route, fragment: category.name });
     };
     ArtworksComponent.prototype.goToDetail = function (artwork) {
         this.onSelect(artwork);
