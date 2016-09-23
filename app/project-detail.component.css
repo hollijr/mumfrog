@@ -13,14 +13,6 @@ button {
   width: 90%;
   margin: 20px auto;
 }
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #ccc; 
-  cursor: auto;
-}
 .project-detail {
   margin: 0 0 2em 0;
   padding: 0;
