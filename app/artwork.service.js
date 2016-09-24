@@ -20,13 +20,11 @@ var ArtworkService = (function () {
         return Promise.resolve(mock_artwork_1.ARTWORK[category]);
     };
     ArtworkService.prototype.getArtwork = function (id) {
-        var n = id, x = 1;
+        var n = id;
         // find first digit of id
-        while (n > 1) {
-            n /= 10;
-            x *= 10;
+        while (n > 9) {
+            n = Math.trunc(n / 10);
         }
-        n = id % x;
         return this.getSubset(n - 1)
             .then(function (subset) { return subset.find(function (art) { return art.id === id; }); });
     };

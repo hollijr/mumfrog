@@ -53,10 +53,12 @@ var ArtworksComponent = (function () {
             });
         });
     };
-    ArtworksComponent.prototype.goToCategory = function (category) {
+    /*
+      goToCategory(category:Category):void {
         this.selectedCategory = category;
         this.router.navigate(['.'], { relativeTo: this.route, fragment: category.name });
-    };
+      }
+    */
     ArtworksComponent.prototype.goToDetail = function (artwork) {
         this.onSelect(artwork);
         this.router.navigate(['/artwork', this.selectedArtwork.id]);

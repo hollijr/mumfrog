@@ -5,6 +5,7 @@ var projects_component_1 = require('./projects.component');
 var dashboard_component_1 = require('./dashboard.component');
 var project_detail_component_1 = require('./project-detail.component');
 var artworks_component_1 = require('./artworks.component');
+var artwork_detail_component_1 = require('./artwork-detail.component');
 var about_component_1 = require('./about.component');
 var appRoutes = [
     {
@@ -26,6 +27,10 @@ var appRoutes = [
     {
         path: 'artworks',
         component: artworks_component_1.ArtworksComponent
+    },
+    {
+        path: 'artwork/:id',
+        component: artwork_detail_component_1.ArtworkDetailComponent
     },
     {
         path: 'about',

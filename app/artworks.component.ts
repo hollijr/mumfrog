@@ -63,11 +63,12 @@ export class ArtworksComponent implements OnInit {
     });
   }
 
+/*
   goToCategory(category:Category):void {
     this.selectedCategory = category;
     this.router.navigate(['.'], { relativeTo: this.route, fragment: category.name });
   }
-
+*/
   goToDetail(artwork:Art):void {
     this.onSelect(artwork);
     this.router.navigate(['/artwork', this.selectedArtwork.id]);

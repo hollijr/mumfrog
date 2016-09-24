@@ -6,6 +6,7 @@ import { ProjectsComponent } from './projects.component';
 import { DashboardComponent } from './dashboard.component';
 import { ProjectDetailComponent } from './project-detail.component';
 import { ArtworksComponent } from './artworks.component';
+import { ArtworkDetailComponent } from './artwork-detail.component';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about.component';
 
@@ -29,6 +30,10 @@ const appRoutes:Routes = [
   {
     path: 'artworks',
     component: ArtworksComponent
+  },
+  {
+    path: 'artwork/:id',
+    component: ArtworkDetailComponent
   },
   {
     path: 'about',

@@ -18,6 +18,7 @@ var dashboard_component_1 = require('./dashboard.component');
 var projects_component_1 = require('./projects.component');
 var project_detail_component_1 = require('./project-detail.component');
 var artworks_component_1 = require('./artworks.component');
+var artwork_detail_component_1 = require('./artwork-detail.component');
 var about_component_1 = require('./about.component');
 var project_service_1 = require('./project.service');
 var artwork_service_1 = require('./artwork.service');
@@ -42,6 +43,7 @@ var AppModule = (function () {
                 projects_component_1.ProjectsComponent,
                 project_detail_component_1.ProjectDetailComponent,
                 artworks_component_1.ArtworksComponent,
+                artwork_detail_component_1.ArtworkDetailComponent,
                 about_component_1.AboutComponent
             ],
             providers: [

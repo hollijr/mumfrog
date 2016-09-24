@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard.component';
 import { ProjectsComponent } from './projects.component';
 import { ProjectDetailComponent } from './project-detail.component';
 import { ArtworksComponent } from './artworks.component';
+import { ArtworkDetailComponent } from './artwork-detail.component';
 import { AboutComponent } from './about.component';
 
 import { ProjectService } from './project.service';
@@ -32,6 +33,7 @@ import { routing } from './app.routing';
     ProjectsComponent,
     ProjectDetailComponent,
     ArtworksComponent,
+    ArtworkDetailComponent,
     AboutComponent
   ],
   providers: [ 

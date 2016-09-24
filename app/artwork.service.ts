@@ -17,13 +17,11 @@ export class ArtworkService {
   }
 
   getArtwork(id:number):Promise<Art> {
-    let n = id, x = 1;
+    let n = id;
     // find first digit of id
-    while (n > 1) {
-      n /= 10;  
-      x *= 10;
+    while (n > 9) {
+      n = Math.trunc(n/10);
     }
-    n = id % x;
     
     return this.getSubset(n-1)
                 .then(subset => subset.find(art => art.id === id));
