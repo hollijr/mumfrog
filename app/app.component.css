@@ -26,12 +26,16 @@ body {
   background-color: transparent;
   padding: 0;
 }
-
+.navbar-brand {
+  padding: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .navbar-toggle, .icon-bar {
   z-index: 1000;
   border: solid 1px #ccc;
 }
-
 .navbar-toggle {
   float: left;
 }
@@ -47,6 +51,7 @@ body {
 
 .masthead-nav > li {
   display: inline-block;
+  
 }
 .masthead-nav > li + li {
   margin-left: 10px;
@@ -58,19 +63,18 @@ body {
   font-weight: bold;
   color: #333; /* IE8 proofing */
   color: rgba(30,30,30,.75);
-  border: 2px solid transparent;
+  background-color: transparent;
 }
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: rgba(9,180,13,.5);
-  border: solid #368808 2px;
-  border-color: rgba(5,89,30,.1);
-  border-bottom: solid #666 1px;
-  border-bottom: solid rgba(5,89,30,.25) 1px;
-  border-left-color: #a9a9a9;
-  border-left-color: rgba(255,255,255,.75);
-  border-top-color: #a9a9a9;
-  border-top-color: rgba(255,255,255,.5);
+.masthead-nav > li > a:hover {
+  color: #01BF01;
+}
+.masthead-nav > li > a:focus,
+.masthead-nav > li > a:hover {
+  text-shadow: 1px 1px 2px black, 0 0 1em #01BF01, 0 0 0.2em #01BF01;
+  color: white;
+}
+.masthead-nav > li > a:hover {
+  text-shadow: 1px 2px 2px black, 0 0 1em #01BF01, 0 0 0.4em #01BF01;
 }
 
 @media (min-width: 768px) {

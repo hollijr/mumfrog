@@ -13,12 +13,12 @@ exports.ARTWORK = [
             category: 'Cookies',
             summary: 'Christmas-theme sugar cookies iced with royal icing',
             details: "<p>I love to bake and decorate cookies at Christmas time!</p>\
-      <img src='images/blueWhiteChristmas.jpg>\
-      <img src='images/redChristmas.jpg'>\
-      <img src='images/redWhiteChristmas.jpg'>\
-      <img src='images/greenChristmas.jpg'>\
-      <img src='images/christmaskids.jpg'>\
-      <img src='images/redBlueGreenChristmas.jpg'>",
+      <img src='images/blueWhiteChristmas.jpg' class='img-responsive img-thumbnail'>\
+      <img src='images/redChristmas.jpg' class='img-responsive img-thumbnail'>\
+      <img src='images/redWhiteChristmas.jpg' class='img-responsive img-thumbnail'>\
+      <img src='images/greenChristmas.jpg' class='img-responsive img-thumbnail'>\
+      <img src='images/christmaskids.jpg' class='img-responsive img-thumbnail'>\
+      <img src='images/redBlueGreenChristmas.jpg' class='img-responsive img-thumbnail'>",
             img: 'images/redWhiteChristmas.jpg',
             date: '2011'
         }
@@ -28,7 +28,7 @@ exports.ARTWORK = [
             title: 'Apple Blossoms Cake',
             category: 'Decorated Cakes',
             summary: 'A simple but pretty layer cake',
-            details: "<p>Ihis cake design came from Wilton's gallery.</p>",
+            details: "<p>This cake design came from Wilton's gallery.</p>",
             img: 'images/appleblossoms.jpg',
             date: '2011' },
     ],
