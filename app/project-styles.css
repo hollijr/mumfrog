@@ -17,8 +17,8 @@
   left: 5px;
   text-align: center;
   background-color: #eee;
-  background: -moz-radial-gradient(white, #fafafa, #eee);
-  background: radial-gradient(white, white, #f3f3f3, #eee);
+  background: -moz-radial-gradient(white, white, white, #f3f3f3, #eee);
+  background: radial-gradient(white, white, white, #f3f3f3, #eee);
   padding: 5px;
   width: 100%;
   height: 100%;
