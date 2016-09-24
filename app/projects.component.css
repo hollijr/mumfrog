@@ -13,18 +13,24 @@
   padding: 5px;
 }
 .project-wrapper {
+  position: relative;
+  width: 100%;
   padding: 5px;
   background-color: transparent;
+  padding-bottom: 140%;  /* maintain aspect ratio with regard to width */
 }
 .project-wrapper:hover {
   background-color: #b4e19e;
 }
 .project-panel {
+  position: absolute;
+  top: 5px;
+  left: 5px;
   text-align: center;
-  margin: 0 auto;
   background-color: #eee;
-  margin: 0;
   padding: 5px;
+  width: 96%;
+  height: 96%;
 }
 .project-panel:hover {
   color: #419427;
