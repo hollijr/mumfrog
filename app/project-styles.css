@@ -17,13 +17,16 @@
   left: 5px;
   text-align: center;
   background-color: #eee;
+  background: -moz-radial-gradient(white, #fafafa, #eee);
+  background: radial-gradient(white, white, #f3f3f3, #eee);
   padding: 5px;
-  width: 96%;
-  height: 96%;
+  width: 100%;
+  height: 100%;
   border: solid 4px transparent;
 }
 .project-panel:hover {
   border-color: #b4e19e;
+  color: #419427;
 }
 .project-panel img {
   width: 100%;

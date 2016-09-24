@@ -34,8 +34,8 @@ a:focus {
   text-decoration: none;
 }
 a:focus, a:hover {
-  color: #192644;
-  text-shadow: 0 0 0.05em #607D8B;
+  color: #419427;
+  text-shadow: 0 0 0.02em #607D8B;
 }
 
 img {

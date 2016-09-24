@@ -15,12 +15,13 @@
 .anchor {
   color: #000;
 }
-.anchor:hover {
+.anchor:hover, .anchor:focus {
   text-decoration: none;
+  text-shadow: none;
 }
 .to-top {
   clear: both;
-  margin-top: 5px;
+  padding-top: 10px;
 }
 .to-top a:hover {
   text-decoration: none;
