@@ -18,6 +18,16 @@ body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
 }
+a {
+  color: #183e90;
+}
+a:focus {
+  text-decoration: none;
+}
+a:focus, a:hover {
+  color: #192644;
+  text-shadow: 1px 1px 1px #607D8B;
+}
 
 img {
   max-width: 100%;

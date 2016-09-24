@@ -33,21 +33,25 @@
   cursor: pointer;
   background-color: #fff;
   border-radius: 4px;
+  padding: 5px;
 }
-.project.selected:hover {
-  background-color: #BBD8DC !important;
-  color: white;
+.project-wrapper {
+  padding: 5px;
+  background-color: transparent;
 }
-.project:hover {
-  color: #607D8B;
-  background-color: #DDD;
+.project-wrapper:hover {
+  background-color: #607D8B;
+  background-color: rgba(96,125,139,.5);
 }
 .project-panel {
   text-align: center;
   margin: 0 auto;
   background-color: #eee;
-  margin: 15px 0;
+  margin: 0;
   padding: 5px;
+}
+.project-panel:hover {
+  color: 607D8B;
 }
 .project-panel img {
   width: 100%;
