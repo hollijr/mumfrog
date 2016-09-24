@@ -61,20 +61,13 @@ body {
   padding-left: 1em;
   font-size: 16px;
   font-weight: bold;
-  color: #333; /* IE8 proofing */
-  color: rgba(30,30,30,.75);
+  color: #555; /* IE8 proofing */
   background-color: transparent;
-}
-.masthead-nav > li > a:hover {
-  color: #01BF01;
 }
 .masthead-nav > li > a:focus,
 .masthead-nav > li > a:hover {
-  text-shadow: 1px 1px 2px black, 0 0 1em #01BF01, 0 0 0.2em #01BF01;
-  color: white;
-}
-.masthead-nav > li > a:hover {
-  text-shadow: 1px 2px 2px black, 0 0 1em #01BF01, 0 0 0.4em #01BF01;
+  text-shadow: 0px 0px 0.5em #b4e19e ;
+  color: #419427;
 }
 
 @media (min-width: 768px) {

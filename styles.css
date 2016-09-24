@@ -1,3 +1,15 @@
+/* color theme:
+  light green: #b4e19e
+  bright green: #09B40D
+  mid green: #419427
+  bright blue: #183e90
+  med. blue: #607D8B
+  dark blue: #192644
+  charcoal: #333
+  mid gray: #444
+  gray: #eee
+*/
+
 /* #docregion , quickstart, toh */
 /* Master Styles */
 h1 {
@@ -10,23 +22,20 @@ h2, h3 {
   font-family: Cambria, Georgia;
   font-weight: lighter;
 }
-body {
-  margin: 2em;
-}
 /* #enddocregion quickstart */
 body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
 }
 a {
-  color: #183e90;
+  color: #607D8B;
 }
 a:focus {
   text-decoration: none;
 }
 a:focus, a:hover {
   color: #192644;
-  text-shadow: 1px 1px 1px #607D8B;
+  text-shadow: 0 0 0.05em #607D8B;
 }
 
 img {
