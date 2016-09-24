@@ -1,0 +1,30 @@
+.project {
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+}
+.project-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  background-color: transparent;
+  padding-bottom: 140%;  /* maintain aspect ratio with regard to width */
+}
+.project-panel {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  text-align: center;
+  background-color: #eee;
+  padding: 5px;
+  width: 96%;
+  height: 96%;
+  border: solid 4px transparent;
+}
+.project-panel:hover {
+  border-color: #b4e19e;
+}
+.project-panel img {
+  width: 100%;
+}

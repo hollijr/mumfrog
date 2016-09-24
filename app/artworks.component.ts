@@ -11,7 +11,7 @@ import { OnInit } from '@angular/core';
 @Component({
   selector: 'my-artworks',
   templateUrl: 'app/artworks.component.html',
-  styleUrls: [ 'app/artworks.component.css' ]
+  styleUrls: [ 'app/project-styles.css', 'app/artworks.component.css' ]
 })
 
 // controller

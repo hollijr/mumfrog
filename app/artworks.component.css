@@ -29,31 +29,8 @@
   margin: 0 0 2em 1em;
   padding: 0;
 }
-.project {
-  cursor: pointer;
-  background-color: #fff;
-  border-radius: 4px;
-  padding: 5px;
-}
 .project-wrapper {
-  padding: 5px;
-  background-color: transparent;
-}
-.project-wrapper:hover {
-  background-color: #b4e19e;
-}
-.project-panel {
-  text-align: center;
-  margin: 0 auto;
-  background-color: #eee;
-  margin: 0;
-  padding: 5px;
-}
-.project-panel:hover {
-  color: #419427;
-}
-.project-panel img {
-  width: 100%;
+  padding-bottom: 175%;  /* need larger height-to-width ratio */
 }
 
 @media (max-width: 767px) {

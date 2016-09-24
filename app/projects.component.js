@@ -44,7 +44,7 @@ var ProjectsComponent = (function () {
         core_1.Component({
             selector: 'my-projects',
             templateUrl: 'app/projects.component.html',
-            styleUrls: ['app/projects.component.css']
+            styleUrls: ['app/project-styles.css', 'app/projects.component.css']
         }), 
         __metadata('design:paramtypes', [project_service_1.ProjectService, router_1.Router])
     ], ProjectsComponent);

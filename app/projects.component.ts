@@ -10,7 +10,7 @@ import { OnInit } from '@angular/core';
 @Component({
   selector: 'my-projects',
   templateUrl: 'app/projects.component.html',
-  styleUrls: [ 'app/projects.component.css' ]
+  styleUrls: [ 'app/project-styles.css', 'app/projects.component.css' ]
 })
 
 // controller

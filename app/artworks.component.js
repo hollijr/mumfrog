@@ -67,7 +67,7 @@ var ArtworksComponent = (function () {
         core_1.Component({
             selector: 'my-artworks',
             templateUrl: 'app/artworks.component.html',
-            styleUrls: ['app/artworks.component.css']
+            styleUrls: ['app/project-styles.css', 'app/artworks.component.css']
         }), 
         __metadata('design:paramtypes', [artwork_service_1.ArtworkService, category_service_1.CategoryService, router_1.Router, router_1.ActivatedRoute])
     ], ArtworksComponent);
