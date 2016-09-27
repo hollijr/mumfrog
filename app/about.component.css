@@ -20,7 +20,15 @@
   position: relative;
   margin-left: -1px;  /* so border lines up with border from sidebar */
 }
-
+figcaption {
+  text-align: center;
+}
+.emphasis {
+  color: black;
+}
+.text {
+  margin-bottom: 2em;
+}
 @media (max-width: 565px) {
   .header img {
     width: 60%;
