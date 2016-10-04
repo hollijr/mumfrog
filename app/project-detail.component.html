@@ -14,9 +14,7 @@
     </div>
     <div class='col-xs-12 col-sm-8 content'>
       <h1>{{project.title}}</h1>
-      <div class='desc'>
-        <p *ngFor="let desc of project.description">{{desc}}</p>
-      </div>
+      <div [innerHTML]="project.description" class='desc'></div>
     </div>
   </div>
   <hr>
