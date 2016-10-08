@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProjectService } from './project.service';
 import { Project } from './project';
+import { GaugeDemoComponent } from './gauge-demo.component';
+import { DclWrapper } from './dclwrapper.component'; 
 
 @Component({
   selector: 'my-project-detail',

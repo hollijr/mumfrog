@@ -12,6 +12,8 @@ import { ProjectDetailComponent } from './project-detail.component';
 import { ArtworksComponent } from './artworks.component';
 import { ArtworkDetailComponent } from './artwork-detail.component';
 import { AboutComponent } from './about.component';
+import { GaugeDemoComponent } from './gauge-demo.component';
+import { DclWrapper } from './dclwrapper.component';
 
 import { ProjectService } from './project.service';
 import { ArtworkService } from './artwork.service';
@@ -34,13 +36,16 @@ import { routing } from './app.routing';
     ProjectDetailComponent,
     ArtworksComponent,
     ArtworkDetailComponent,
-    AboutComponent
+    AboutComponent,
+    GaugeDemoComponent,
+    DclWrapper
   ],
   providers: [ 
     ProjectService,
     ArtworkService,
     CategoryService
   ],
+  entryComponents: [ GaugeDemoComponent ],
   bootstrap: [ AppComponent ],
 })
 

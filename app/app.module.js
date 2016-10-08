@@ -20,6 +20,8 @@ var project_detail_component_1 = require('./project-detail.component');
 var artworks_component_1 = require('./artworks.component');
 var artwork_detail_component_1 = require('./artwork-detail.component');
 var about_component_1 = require('./about.component');
+var gauge_demo_component_1 = require('./gauge-demo.component');
+var dclwrapper_component_1 = require('./dclwrapper.component');
 var project_service_1 = require('./project.service');
 var artwork_service_1 = require('./artwork.service');
 var category_service_1 = require('./category.service');
@@ -44,13 +46,16 @@ var AppModule = (function () {
                 project_detail_component_1.ProjectDetailComponent,
                 artworks_component_1.ArtworksComponent,
                 artwork_detail_component_1.ArtworkDetailComponent,
-                about_component_1.AboutComponent
+                about_component_1.AboutComponent,
+                gauge_demo_component_1.GaugeDemoComponent,
+                dclwrapper_component_1.DclWrapper
             ],
             providers: [
                 project_service_1.ProjectService,
                 artwork_service_1.ArtworkService,
                 category_service_1.CategoryService
             ],
+            entryComponents: [gauge_demo_component_1.GaugeDemoComponent],
             bootstrap: [app_component_1.AppComponent],
         }), 
         __metadata('design:paramtypes', [])

@@ -10,8 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var mock_projects_1 = require('./mock-projects');
+var gauge_demo_component_1 = require('./gauge-demo.component');
 var ProjectService = (function () {
     function ProjectService() {
+        this.componentTable = {
+            'GaugeDemoComponent': gauge_demo_component_1.GaugeDemoComponent
+        };
     }
     ProjectService.prototype.getProjects = function () {
         return Promise.resolve(mock_projects_1.PROJECTS);
@@ -23,8 +27,15 @@ var ProjectService = (function () {
             .then(this.getProjects);
     };
     ProjectService.prototype.getProject = function (id) {
+        var _this = this;
         return this.getProjects()
-            .then(function (projects) { return projects.find(function (project) { return project.id === id; }); });
+            .then(function (projects) { return projects.find(function (project) { return project.id === id; }); })
+            .then(function (project) {
+            if (project.componentName) {
+                project.component = _this.componentTable[project.componentName];
+            }
+            return project;
+        });
     };
     ProjectService = __decorate([
         core_1.Injectable(), 

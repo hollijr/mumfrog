@@ -3,9 +3,16 @@ import { Injectable } from '@angular/core';
 import { Project } from './project';
 import { PROJECTS } from './mock-projects';
 
+import { GaugeDemoComponent } from './gauge-demo.component';
+
 @Injectable ()
 
 export class ProjectService {
+
+  componentTable = {
+    'GaugeDemoComponent': GaugeDemoComponent
+  };
+
   getProjects():Promise<Project[]> {
     return Promise.resolve(PROJECTS);
   }
@@ -16,6 +23,12 @@ export class ProjectService {
   }
   getProject(id:number):Promise<Project> {
     return this.getProjects()
-                .then(projects => projects.find(project => project.id === id));
+                .then(projects => projects.find(project => project.id === id))
+                .then((project) => {
+                  if (project.componentName) {
+                    project.component = this.componentTable[project.componentName];
+                  }
+                  return project;
+                });
   }
 }

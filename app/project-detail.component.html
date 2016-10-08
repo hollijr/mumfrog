@@ -25,5 +25,13 @@
     <div *ngIf="project.demo">
       <div [innerHTML]="project.demo" class="demo-content"></div>
     </div>
+    <div *ngIf="project.component">
+      <dcl-wrapper [type]="project.component"></dcl-wrapper>
+    </div>
+    <!--
+    <div *ngIf="project.id === 11">
+    <my-gauge-demo></my-gauge-demo>
+    </div>
+    -->
   </div>
 </div>
