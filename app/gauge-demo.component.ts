@@ -1,24 +1,26 @@
-import { Component, ViewChild, AfterViewChecked  } from '@angular/core';
+import { Component, ViewChild, AfterViewInit  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'my-gauge-demo',
   template: `
-    <div>
-      <canvas #myCanvas width="400" height="400" style="background:lightgray;">Your browser does not support HTML5 Canvas</canvas>
-      <div>Width <input type="range" min="1" max="400" [(ngModel)]="rectW"></div>
-    </div>
-  `,
+    <div class="container">
+      <canvas #myCanvas width="200" height="200" style="background:lightgray;">Your browser does not support HTML5 Canvas</canvas>
+      <div>Width <input type="range" min="1" max="200" [(ngModel)]="rectW" (change)="redraw()"> </div>
+      <div>Height <input type="range" min="1" max="200" [(ngModel)]="rectH" (change)="redraw()"> </div>
+      <div>Color <input type="color" [(ngModel)]="rectColor" placeholder="color" value="{{rectColor}}"> </div>
+    </div>`,
   styles: [`
-  canvas {
-    border: solid 1px black;
-    width: 400px;
-      height: 400px;
-  }
+    canvas {
+      border: solid 1px red;
+    }
+    .container {
+      width: 200px;
+    }
   `]
 })
 
-export class GaugeDemoComponent implements AfterViewChecked {
+export class GaugeDemoComponent implements AfterViewInit  {
   rectW:number = 100;
   rectH:number = 100;
   rectColor:string = "#FF0000";
@@ -26,13 +28,17 @@ export class GaugeDemoComponent implements AfterViewChecked {
 
   @ViewChild("myCanvas") myCanvas;
 
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
     let canvas = this.myCanvas.nativeElement;
     this.context = canvas.getContext("2d");
-    this.tick();
+    this.redraw();
   }
 
-  tick() {
+  redraw() {
+
+    requestAnimationFrame(() => {
+      this.redraw();
+    });
 
     var ctx = this.context;
     ctx.clearRect(0,0,400,400);

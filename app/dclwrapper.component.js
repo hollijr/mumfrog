@@ -34,7 +34,7 @@ var DclWrapper = (function () {
     };
     DclWrapper.prototype.ngOnInit = function () {
         console.log("OnInit called from dcl");
-        this.cdRef.detach(); // bug fix to prevent 'Expression has changed... exception
+        this.cdRef.detach(); // prevents Exception: "Expression has changed value since being checked"
     };
     DclWrapper.prototype.ngOnChanges = function () {
         console.log("OnChange called from DclWrapper");

@@ -328,6 +328,17 @@ exports.PROJECTS = [
     </tbody>\
     </table>",
         demoLink: 'http://www.flitfire.com/tech/robotic-vacuum-wars/',
-        codeRepo: '' }
+        codeRepo: '' },
+    { id: 23,
+        title: 'Mumfrog Web Site',
+        technology: ['Angular 2'],
+        summary: 'Using the Angular 2 Framework to create a porfolio web site',
+        description: "<p>The site you are viewing is written using the Angular 2 framework.  Data is supplied by a PHP (limitation of my web host) service on the server.</p><p>One of the most interesting parts of this project involved researching and experimenting how to dynamically generate components, which I use to provide the 'Demo' section at the bottom of some of the project detail pages.</p>",
+        img: 'images/frog250.jpg',
+        componentName: '',
+        component: null,
+        demo: '',
+        demoLink: '',
+        codeRepo: 'https://github.com/hollijr/mumfrog' },
 ];
 //# sourceMappingURL=mock-projects.js.map

@@ -15,12 +15,16 @@ var GaugeDemoComponent = (function () {
         this.rectH = 100;
         this.rectColor = "#FF0000";
     }
-    GaugeDemoComponent.prototype.ngAfterViewChecked = function () {
+    GaugeDemoComponent.prototype.ngAfterViewInit = function () {
         var canvas = this.myCanvas.nativeElement;
         this.context = canvas.getContext("2d");
-        this.tick();
+        this.redraw();
     };
-    GaugeDemoComponent.prototype.tick = function () {
+    GaugeDemoComponent.prototype.redraw = function () {
+        var _this = this;
+        requestAnimationFrame(function () {
+            _this.redraw();
+        });
         var ctx = this.context;
         ctx.clearRect(0, 0, 400, 400);
         ctx.fillStyle = this.rectColor;
@@ -33,8 +37,8 @@ var GaugeDemoComponent = (function () {
     GaugeDemoComponent = __decorate([
         core_1.Component({
             selector: 'my-gauge-demo',
-            template: "\n    <div>\n      <canvas #myCanvas width=\"400\" height=\"400\" style=\"background:lightgray;\">Your browser does not support HTML5 Canvas</canvas>\n      <div>Width <input type=\"range\" min=\"1\" max=\"400\" [(ngModel)]=\"rectW\"></div>\n    </div>\n  ",
-            styles: ["\n  canvas {\n    border: solid 1px black;\n    width: 400px;\n      height: 400px;\n  }\n  "]
+            template: "\n    <div class=\"container\">\n      <canvas #myCanvas width=\"200\" height=\"200\" style=\"background:lightgray;\">Your browser does not support HTML5 Canvas</canvas>\n      <div>Width <input type=\"range\" min=\"1\" max=\"200\" [(ngModel)]=\"rectW\" (change)=\"redraw()\"> </div>\n      <div>Height <input type=\"range\" min=\"1\" max=\"200\" [(ngModel)]=\"rectH\" (change)=\"redraw()\"> </div>\n      <div>Color <input type=\"color\" [(ngModel)]=\"rectColor\" placeholder=\"color\" value=\"{{rectColor}}\"> </div>\n    </div>",
+            styles: ["\n    canvas {\n      border: solid 1px red;\n    }\n    .container {\n      width: 200px;\n    }\n  "]
         }), 
         __metadata('design:paramtypes', [])
     ], GaugeDemoComponent);
