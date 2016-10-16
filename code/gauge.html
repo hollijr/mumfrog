@@ -3,7 +3,49 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Gauge Demo</title>
-	
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<style>
+		.input {
+			width: 300px;
+			float: left;
+			margin-right: 20px;
+		}
+		label {
+			width: 140px;
+			margin-top: 10px;
+			margin-bottom: 5px;
+		}
+		.clear {
+			clear: both;
+		}
+		.inblock {
+			display: inline-block;
+		}
+		h4 {
+			text-decoration: underline;
+		}
+		.lower-right {
+			position: absolute;
+			right: 0px;
+			bottom: 20px;
+		}
+		.align-right {
+			float: right;
+		}
+		button {
+			width: 100px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+		}
+
+	</style>
 	<script type="text/javascript" src="Gauge.js"></script>
 	<script type="text/javascript">
 	
@@ -15,8 +57,8 @@
 
 	function gaugeDemo() {
 
-		var gaugeSettings = [
-			{	"inputGranularity" : 1,
+		var gaugeSettings = {	
+				inputGranularity : 1,
 				titleLine1 : "ACCUMULATOR",
 				titleLine2 : "PRESSURE",
 				titleFont : "18pt Arial",
@@ -29,7 +71,7 @@
 				endDegree : 405,
 				outerScaleDiam : 100,
 				outerScaleRange : {s: 0, e: 6000},
-				outerScaleIntervals : [500,100,0],
+				outerScaleIntervals : [500,100,0],  // not using third interval at present
 				outerScaleFnt : "8pt Calibri",
 				outerScaleColor : "black",
 				outerScaleUnit : "PSI",
@@ -48,76 +90,164 @@
 				digHt : 14,
 				digFnt : "12pt Calibri",
 				digBC : "#efefef"
-			},
-			{	inputGranularity : 1,
-				titleLine1 : "RIG AIR",
-				titleLine2 : "PRESSURE",
-				titleFont : "18pt Arial",
-				gaugeDiam : 175,
-				rimWidth : 25,
-				faceColor : "white",
-				centerX : 200,
-				centerY : 250,
-				startDegree : 135,
-				endDegree : 405,
-				outerScaleDiam : 100,
-				outerScaleRange : {s: 0, e: 300},
-				outerScaleIntervals : [25,5,0],
-				outerScaleFnt : "8pt Calibri",
-				outerScaleColor : "black",
-				outerScaleUnit : "PSI",
-				hasInnerScale : true,
-				innerScaleConvFactor : 0.068573,
-				innerScaleDiam : 96,
-				innerScaleStartLabel : 0,
-				innerScaleIntervals : [1,0.5,0],
-				innerScaleFnt : "8pt Arial",
-				innerScaleColor : "red",
-				innerScaleUnit : "Kg/cm3",
-				innerScaleToEnd : true,
-				dialBaseDiam : 25,
-				pointerColor: "blue",
-				digWd : 50,
-				digHt : 14,
-				digFnt : "12pt Calibri",
-				digBC : "#efefef"
+			};
+
+			// Build the slider so user can simulate input
+			var sliderCanvas = document.getElementById("sliderCanvas");
+			var ctx = sliderCanvas.getContext("2d");
+			var maxSteps = gaugeSettings.outerScaleRange.e - gaugeSettings.outerScaleRange.s + 1;
+			var canvasHt = parseInt(sliderCanvas.getAttribute('height'), 10);
+			var canvasWd = parseInt(sliderCanvas.getAttribute('width'), 10);
+			var sliderHeight = canvasHt - 10;
+			var sliderX = 30, sliderY = sliderHeight + 5;
+			var handleHalfWd = 12, handleHalfHt = 2, handleY = sliderY;
+			var pxInterval = Math.floor(sliderHeight / maxSteps * gaugeSettings.outerScaleIntervals[1]);
+			var mousedown = false;
+
+
+			function drawSlider() {
+
+				ctx.rect(0,0,canvasWd,canvasHt);
+				ctx.clip();
+				ctx.clearRect(0,0,canvasWd,canvasHt);
+
+				var y = sliderY;
+
+				// draw slider tick marks
+				
+				ctx.lineWidth = 1;
+				for (var i = 0; i < maxSteps; i = i + gaugeSettings.outerScaleIntervals[1]) {
+					drawLine(i, y);
+					y -= pxInterval;
+				}
+
+				y += pxInterval;
+				sliderHeight = sliderY - y;
+
+				// draw vertical slider line
+				ctx.strokeStyle = "blue";
+				ctx.lineWidth = 5;
+				ctx.beginPath();
+				ctx.moveTo(sliderX, sliderY);
+				ctx.lineTo(sliderX, y);
+				ctx.stroke();
+				ctx.closePath();
+
+				// draw slider handle based on current mouse position
+				
+				ctx.fillStyle = "black";
+				ctx.beginPath();
+				ctx.arc(sliderX - handleHalfWd, handleY, handleHalfHt, (Math.PI/180)*90, (Math.PI/180)*270, false);
+				ctx.lineTo(sliderX + handleHalfWd, handleY - handleHalfHt);
+				ctx.arc(sliderX + handleHalfWd, handleY, handleHalfHt, (Math.PI/180)*270, (Math.PI/180)*450, false);
+				ctx.lineTo(sliderX - handleHalfWd, handleY + handleHalfHt);
+				ctx.fill();
+				ctx.closePath();
 			}
-		];
 
-		var isRunning = [false, false];
-		var inputLevels = [
-			{curr : gaugeSettings[0].outerScaleRange.s, targ : gaugeSettings[0].outerScaleRange.s},
-			{curr : gaugeSettings[1].outerScaleRange.s, targ : gaugeSettings[1].outerScaleRange.s}
-		];
+			function drawLine(i, y) {
+				var x1 = sliderX - 5, x2 = sliderX + 5, label = false;
+				if (i % gaugeSettings.outerScaleIntervals[0] === 0) {
+						x1 -= 3;
+						x2 += 3;
+						label = true;
+					}
+				ctx.beginPath();
+				ctx.moveTo(x1, y);
+				ctx.lineTo(x2, y);
+				ctx.stroke();
+				ctx.closePath();
+				if (label) {
+					ctx.fillStyle = "blue";
+					ctx.textBaseline = "middle";
+					ctx.textAlign = "start";
+					ctx.fillText(i.toString(), x2 + 8, y);
+				}
+			}
 
-		document.getElementById('btn0').addEventListener('click', function() {
-        		toggleDemo(0);}, false);
-		document.getElementById('btn1').addEventListener('click', function() {
-        		toggleDemo(1);}, false);
+			sliderCanvas.addEventListener('mousedown', (evt) => {
+				mousedown = true;
+			});
+			sliderCanvas.addEventListener('mouseup', (evt) => {
+				mousedown = false;
+			});
 
-		function toggleDemo(btnNum) {
-			var btnId = 'btn' + btnNum.toString();
-			if (!isRunning[btnNum]) {
-				isRunning[btnNum] = true;
-				document.getElementById(btnId).innerHTML = "Stop Demo";
+			sliderCanvas.addEventListener('mousemove', function(evt) {
+				if (mousedown) {
+					var mousePos = getMousePos(this, evt);
+        	//var message = onHandle + " -- Mouse position: " + mousePos.x + "," + mousePos.y + " || " + mousePos.msg;
+        	//writeMessage(this, message);
+        	if (isOnSlider(mousePos)) {
+        		var value = (sliderY - mousePos.y) / sliderHeight * maxSteps;
+						//console.log(value);
+						if (value < 0) {
+							handleY = sliderY;
+						} else if (value >= maxSteps) {
+							handleY = sliderY - sliderHeight;
+						} else {
+							handleY = mousePos.y;
+						}
+					}
+        	drawSlider();
+				}
+      }, false);
+
+		function isOnSlider(mousePos) {
+			if (mousePos.x >= sliderX - handleHalfWd && mousePos.x <= sliderX + handleHalfWd &&
+				 mousePos.y >= sliderY - sliderHeight && mousePos.y <= sliderY) {
+				return true;
+			}
+			return false;
+		}
+
+		function getMousePos(canvas, evt) {
+        	var rect = canvas.getBoundingClientRect(), root = document.documentElement;
+
+       		// return relative mouse position
+        	var mouseX = evt.clientX - rect.left - root.scrollLeft;
+        	var mouseY = evt.clientY - rect.top - root.scrollTop;
+					var pos = {x: mouseX, y: mouseY, msg: "cx: " + evt.clientX + ", cy: " + evt.clientY + ", t: " + rect.top + ", l: " + rect.left + ", st:" + root.scrollTop + ", sl:" + root.scrollLeft};
+					//console.log(pos);
+        	return pos;
+     	}
+
+		var isRunning = false;
+		var inputLevels = {curr : gaugeSettings.outerScaleRange.s};
+		inputLevels.targ = setTarget();
+		var delay = Math.round(Math.random()*20);
+		var tick = 0;
+		var btn = document.getElementById('btn');
+		btn.addEventListener('click', function() {
+        		toggleDemo();}, false);
+
+		function setTarget() {
+			return gaugeSettings.outerScaleRange.s + 
+							(Math.round(Math.random()*((gaugeSettings.outerScaleRange.e - gaugeSettings.outerScaleRange.s) / 
+							gaugeSettings.inputGranularity) * gaugeSettings.inputGranularity));
+		}
+		
+		function toggleDemo() {
+			if (!isRunning) {
+				isRunning = true;
+				btn.innerHTML = "Stop Simulation";
 				if (timeoutLen == 500) {
 					timer = setInterval(function(){runDemo();},100);
 				}
 			} else {
-				isRunning[btnNum] = false;
-				document.getElementById(btnId).innerHTML = "Start Demo";
-				if (!isRunning[0] && !isRunning[1]) {
-					clearInterval(timer);
-					timeoutLen = 500;
-				}
+				isRunning = false;
+				btn.innerHTML = "Start Simulation";
+				clearInterval(timer);
+				timeoutLen = 500;
 			}
 		}
 
-		var gauge1 = new Gauge("canvas", gaugeSettings[0]);  
-		var gauge2 = new Gauge("canvas2", gaugeSettings[1]);
+		function randomBoolean() {
+			return Math.round(Math.random()) == 1;
+		}
 
-		gauge2.drawScreen();
-		gauge1.drawScreen();
+		var gauge = new Gauge("canvas", gaugeSettings);  
+		gauge.drawScreen();
+		drawSlider();
 
 		var timeoutLen = 500;
 		var timer;
@@ -125,52 +255,113 @@
 		function runDemo() {
 			var lbl = document.getElementById("lbl");
 			lbl.innerHTML = "Running demo..." + (timeoutLen + 1).toString();
+			
 
-			for (var idx = 0; idx < 2; idx++) {
-				var gauge = (idx == 0) ? gauge1 : gauge2;
-				//lbl.innerHTML += (" " + idx + ": " + isRunning[idx]);
-				if (isRunning[idx]) {
-					if (inputLevels[idx].curr < inputLevels[idx].targ) {
-						inputLevels[idx].curr += (gaugeSettings[idx].outerScaleIntervals[1] * gaugeSettings[idx].inputGranularity);
-						if (inputLevels[idx].curr > inputLevels[idx].targ) inputLevels[idx].curr = inputLevels[idx].targ;
-					}
-					else if (inputLevels[idx].curr > inputLevels[idx].targ) {
-						inputLevels[idx].curr -= (gaugeSettings[idx].outerScaleIntervals[1] * gaugeSettings[idx].inputGranularity);
-						if (inputLevels[idx].curr < inputLevels[idx].targ) inputLevels[idx].curr = inputLevels[idx].targ;
-					}
-					else inputLevels[idx].targ = gaugeSettings[idx].outerScaleRange.s + (Math.round(Math.random()*((gaugeSettings[idx].outerScaleRange.e - gaugeSettings[idx].outerScaleRange.s) / gaugeSettings[idx].inputGranularity) * gaugeSettings[idx].inputGranularity));
-					//lbl.innerHTML += (" " + idx + ": [" + inputLevels[idx].curr.toString() + ", " + inputLevels[idx].targ.toString() + "]");
+			if (isRunning) {
+				if (inputLevels.curr < inputLevels.targ) {
+					inputLevels.curr += (gaugeSettings.outerScaleIntervals[1] * gaugeSettings.inputGranularity);
+					if (inputLevels.curr > inputLevels.targ) inputLevels.curr = inputLevels.targ;
 				}
-				gauge.setInputLevel(inputLevels[idx].curr);
-				gauge.drawScreen();
+				else if (inputLevels.curr > inputLevels.targ) {
+					inputLevels.curr -= (gaugeSettings.outerScaleIntervals[1] * gaugeSettings.inputGranularity);
+					if (inputLevels.curr < inputLevels.targ) inputLevels.curr = inputLevels.targ;
+				}
+				else {
+					if (tick++ > delay) {
+						tick = 0;
+						delay = Math.round(Math.random()*30);
+						inputLevels.targ = setTarget();
+					}
+				}
 			}
+			gauge.setInputLevel(inputLevels.curr);
+			gauge.drawScreen();
+
 			if (timeoutLen-- < 0) {
 				clearInterval(timer);
-				for (var idx = 0; idx < 2; idx++) {
-					isRunning[idx] = false;
-					document.getElementById("btn" + idx.toString()).innerHTML = "Start Demo";
-				}
+				isRunning = false;
+				btn.innerHTML = "Start Simulation";
 				timeoutLen = 500;
 			}
 		}
-
 	}
 
 	</script>
 </head>
 <body>
-	<div style="position:absolute;top:50px;left:50px;">
-		<button id="btn0" type="button" style="float:right;display:inline;margin-top:100px;font-size:14px;">Start Demo</button>
+	<div>
 		<canvas id="canvas" width="500" height="500" >
 	Your browser does not support HTML5 Canvas
-		</canvas>
-		
-	</div>
-	<div style="position:absolute;top:550px;left:50px;">
-		<button id="btn1" type="button" style="float:right;display:inline;margin-top:100px;font-size:14px;">Start Demo</button>
-		<canvas id="canvas2" width="500" height="500" >
+		</canvas>	
+		<canvas id="sliderCanvas" width="100" height="500" >
 	Your browser does not support HTML5 Canvas
 		</canvas>
+		<button id="btn" type="button" class="btn-default">Start Simulation</button>
+		<input id="slider" type="range" min="0" max="100" value="0">
+		<div class="well">
+			<form class="form-inline relative">
+				<div class="left inblock clear">
+					<h4>Gauge Variables</h4>
+					<div class="input clear left"><label>Input Granularity:</label><input id="inputGran" type="number" value="1"></div>
+					<div class="input clear left"><label>Title:</label><input id="title1" type="text" value="ACCUMULATOR"></div>
+					<div class="input clear left"><label> </label></label><input id="title2" type="text" value="PRESSURE"></div>
+					<div class="input clear left"><label>Font:</label><input id="titleFont" type="text" value="18pt Arial"></div>
+					<div class="input clear left"><label>Gauge Diameter (px):</label><input id="gaugeDiam" type="number" value="175"></div>
+					<div class="input clear left"><label>Rim Width (px):</label><input id="rimWidth" type="number" value="25"></div>
+					<div class="input clear left"><label>Center Diameter (px):</label><input id="dialBaseDiam" type="number" value="25"></div>
+					<div class="input clear left"><label>Face Color:</label><input id="faceColor" type="color" value="#ffffff"></div>
+					<div class="input clear left"><label>Pointer Color:</label><input id="pointerColor" type="color" value="#0000FF"></div>
+					<div class="input clear left"><label>Start Degree:</label><input id="startDegree" type="number" value="135"></div>
+					<div class="input clear left"><label>End Degree:</label><input id="endDegree" type="number" value="405"></div>
+					<div class="input clear left"><label>Digit Width:</label><input id="digWd" type="number" value="60"></div>
+					<div class="input clear left"><label>Digit Height:</label><input id="digHt" type="number" value="14"></div>
+					<div class="input clear left"><label>Digit Font:</label><input id="digFnt" type="text" value="12pt Calibri"></div>
+					<div class="input clear left"><label>Digit Background Color:</label><input id="digBC" type="color" value="#efefef"></div>
+					<div class="input clear left"><label>CenterX (px):</label><input id="centerX" type="number" value="200"></div>
+					<div class="input clear left"><label>CenterY (px):</label><input id="centerY" type="number" value="250"> </div>
+					<div class="input clear left"><label>Include Inner Scale?:</label>
+						<select id="hasInnerScale">
+							<option value="true" [selected]="true">Yes</option>
+							<option value="false">No</option>
+						</select>
+					</div>
+				</div>
+				<div class="left inblock clear">
+					<h4>Outer Scale</h4>
+					<div class="input clear left"><label>Scale Diameter (px):</label><input id="outerScaleDiam" type="number" value="100"></div>
+					<div class="input clear left"><label>Min Value:</label><input id="outerScaleRangeLo" type="number" value="0"></div>
+					<div class="input clear left"><label>Max Value:</label><input id="outerScaleRangeHi" type="number" value="6000"></div>
+					<div class="input clear left"><label>Major Interval:</label><input id="outerScaleIntervals1" type="number" value="500"></div>
+					<div class="input clear left"><label>Minor Interval:</label><input id="outerScaleIntervals2" type="number" value="100"></div>
+					<div class="input clear left"><label>Subminor Interval:</label><input id="outerScaleIntervals3" type="number" value="0"></div>
+					<div class="input clear left"><label>Font:</label><input id="outerScaleFnt" type="text" value="8pt Calibri"></div>
+					<div class="input clear left"><label>Color:</label><input id="outerScaleColor" type="color" value="#000000"></div>
+					<div class="input clear left"><label>Unit:</label><input id="outerScaleUnit" type="text" value="PSI"></div>
+				</div>
+				<div class="left inblock">
+					<h4>Inner Scale</h4>
+					<div class="input clear left"><label>Scale Diameter (px):</label><input id="innerScaleDiam" type="number" value="96"></div>
+					<div class="input clear left"><label>Inner:Outer Ratio:</label><input id="innerScaleConvFactor" type="number" value="0.068573"></div>	
+					<div class="input clear left"><label>Min Value:</label><input id="innerScaleStartLabel" type="number" value="0"></div>
+					<div class="input clear left"><label>Major Interval:</label><input id="innerScaleIntervals1" type="number" value="50"></div>
+					<div class="input clear left"><label>Minor Interval:</label><input id="innerScaleIntervals2" type="number" value="10"></div>
+					<div class="input clear left"><label>Subminor Interval:</label><input id="innerScaleIntervals3" type="number" value="0"></div>
+					<div class="input clear left"><label>Font:</label><input id="innerScaleFnt" type="text" value="8pt Arial"></div>
+					<div class="input clear left"><label>Color:</label><input id="innerScaleColor" type="color" value="#ff0000"></div>
+					<div class="input clear left"><label>Unit:</label><input id="innerScaleUnit" type="text" value="Kg/cm3"></div>
+					<div class="input clear left"><label>Match Outer End?:</label>
+						<select id="innerScaleToEnd">
+							<option value="true" [selected]="true">Yes</option>
+							<option value="false">No</option>
+						</select>
+					</div>
+					<div class="input clear lower-right">
+						<button class="btn-default align-right" id="apply">Apply</button>
+						<button class="btn-default align-right" id="reset">Reset</button>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 	<div style="position:absolute;top:50px;left:550px;">
 		<label id="lbl"></label>
