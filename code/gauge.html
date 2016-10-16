@@ -290,9 +290,13 @@
 			return Math.round(Math.random()) == 1;
 		}
 
-		var gauge = new Gauge("canvas", gaugeSettings);  
-		gauge.drawScreen();
-		drawSlider();
+		var gauge = createGauge();
+		
+		function createGauge() {
+			gauge = new Gauge("canvas", gaugeSettings);  
+			gauge.drawScreen();
+			drawSlider();
+		}
 
 		var timeoutLen = 500;
 		var timer;
@@ -301,7 +305,6 @@
 			var lbl = document.getElementById("lbl");
 			lbl.innerHTML = "Running demo..." + (timeoutLen + 1).toString();
 			
-
 			if (isRunning) {
 				if (inputLevels.curr < inputLevels.targ) {
 					inputLevels.curr += (gaugeSettings.outerScaleIntervals[1] * gaugeSettings.inputGranularity);
@@ -351,7 +354,51 @@
 			}
 		}, false);
 
+		function setSettings() {
+			gaugeSettings.inputGranularity = document.getElementById("inputGran").value;
+			gaugeSettings.titleLine1 = document.getElementById("title1").value;
+			gaugeSettings.titleLine2 = document.getElementById("title2").value;
+			gaugeSettings.titleFont = document.getElementById("titleFont").value;
+			gaugeSettings.gaugeDiam = document.getElementById("gaugeDiam").value;
+			gaugeSettings.rimWidth = document.getElementById("rimWidth").value;
+			gaugeSettings.faceColor = document.getElementById("faceColor").value;
+			gaugeSettings.centerX = document.getElementById("centerX").value;
+			gaugeSettings.centerY = document.getElementById("centerY").value;
+			gaugeSettings.startDegree = document.getElementById("startDegree").value;
+			gaugeSettings.endDegree = document.getElementById("endDegree").value;
+			gaugeSettings.outerScaleDiam = document.getElementById("outerScaleDiam").value;
+			gaugeSettings.outerScaleRange[0] = document.getElementById("outerScaleRangeLo").value;
+			gaugeSettings.outerScaleRange[1] = document.getElementById("outerScaleRangeHi").value;
+			gaugeSettings.outerScaleIntervals[0] = document.getElementById("outerScaleIntervals1").value;
+			gaugeSettings.outerScaleIntervals[1] = document.getElementById("outerScaleIntervals1").value;
+			gaugeSettings.outerScaleIntervals[2] = document.getElementById("outerScaleIntervals1").value;
+			gaugeSettings.outerScaleFnt = document.getElementById("outerScaleFnt").value;
+			gaugeSettings.outerScaleColor = document.getElementById("outerScaleColor").value;
+			gaugeSettings.outerScaleUnit = document.getElementById("outerScaleUnit").value;
+			gaugeSettings.hasInnerScale = document.getElementById("hasInnerScale").value;
+			gaugeSettings.innerScaleConvFactor = document.getElementById("innerScaleConvFactor").value;
+			gaugeSettings.innerScaleDiam = document.getElementById("innerScaleDiam").value;
+			gaugeSettings.innerScaleStartLabel = document.getElementById("innerScaleStartLabel").value;
+			gaugeSettings.innerScaleIntervals[0] = document.getElementById("innerScaleIntervals1").value;
+			gaugeSettings.innerScaleIntervals[1] = document.getElementById("innerScaleIntervals2").value;
+			gaugeSettings.innerScaleIntervals[2] = document.getElementById("innerScaleIntervals3").value;
+			gaugeSettings.innerScaleFnt = document.getElementById("innerScaleFnt").value;
+			gaugeSettings.innerScaleColor = document.getElementById("innerScaleColor").value;
+			gaugeSettings.innerScaleUnit = document.getElementById("innerScaleUnit").value;
+			gaugeSettings.innerScaleToEnd = document.getElementById("innerScaleToEnd").value;
+			gaugeSettings.dialBaseDiam = document.getElementById("dialBaseDiam").value;
+			gaugeSettings.pointerColor = document.getElementById("pointerColor").value;
+			gaugeSettings.digWd = document.getElementById("digWd").value;
+			gaugeSettings.digHt = document.getElementById("digHt").value;
+			gaugeSettings.digFnt = document.getElementById("digFnt").value;
+			gaugeSettings.digBC = document.getElementById("digBC").value;
+		}
+
 		// TODO: on submit after changes to input field
+		document.getElementById("apply").addEventListener('click', (e) => {
+			setSettings();
+			createGauge();
+		});
 
 		// reset input fields
 		document.getElementById("reset").addEventListener('click', (e) => {
