@@ -4,14 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Gauge Demo</title>
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script   src="http://code.jquery.com/jquery-3.1.1.slim.min.js"   integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="   crossorigin="anonymous"></script>
 	<style>
+		body {
+			padding: 20px;
+		}
 		.input {
 			width: 300px;
 			float: left;
@@ -65,6 +70,12 @@
 		#slider {
 			width: 500px;
 		}
+		.top-space {
+			margin-top: 20px;
+		}
+		.bottom-space {
+			margin-bottom: 20px;
+		}
 
 	</style>
 	<script type="text/javascript" src="Gauge.js"></script>
@@ -78,7 +89,11 @@
 
 	function gaugeDemo() {
 
-		var gaugeSettings = {	
+		var gaugeSettings;
+		resetSettings();
+
+		function resetSettings() {
+			gaugeSettings = {	
 				inputGranularity : 1,
 				titleLine1 : "ACCUMULATOR",
 				titleLine2 : "PRESSURE",
@@ -112,111 +127,115 @@
 				digFnt : "12pt Calibri",
 				digBC : "#efefef"
 			};
-
-			// Build the slider so user can simulate input
-			var sliderCanvas = document.getElementById("sliderCanvas");
-			var ctx = sliderCanvas.getContext("2d");
-			var maxSteps = gaugeSettings.outerScaleRange.e - gaugeSettings.outerScaleRange.s + 1;
-			var canvasHt = parseInt(sliderCanvas.getAttribute('height'), 10);
-			var canvasWd = parseInt(sliderCanvas.getAttribute('width'), 10);
-			var sliderHeight = canvasHt - 10;
-			var sliderX = 30, sliderY = sliderHeight + 5;
-			var handleHalfWd = 12, handleHalfHt = 2, handleY = sliderY;
-			var pxInterval = Math.floor(sliderHeight / maxSteps * gaugeSettings.outerScaleIntervals[1]);
-			var mousedown = false;
-
-
-			function drawSlider() {
-
-				ctx.rect(0,0,canvasWd,canvasHt);
-				ctx.clip();
-				ctx.clearRect(0,0,canvasWd,canvasHt);
-
-				var y = sliderY;
-
-				// draw slider tick marks
+		}
 				
-				ctx.lineWidth = 1;
-				for (var i = 0; i < maxSteps; i = i + gaugeSettings.outerScaleIntervals[1]) {
-					drawLine(i, y);
-					y -= pxInterval;
-				}
+		// Build the slider so user can simulate input
+		var sliderCtrl = document.getElementById("slider");  // html slider control
+		var sliderCanvas = document.getElementById("sliderCanvas");
+		var ctx = sliderCanvas.getContext("2d");
+		var maxSteps = gaugeSettings.outerScaleRange.e - gaugeSettings.outerScaleRange.s + 1;
+		var canvasHt = parseInt(sliderCanvas.getAttribute('height'), 10);
+		var canvasWd = parseInt(sliderCanvas.getAttribute('width'), 10);
+		var sliderHeight = canvasHt - 10;  // initial slider height is 10 pixels less than canvas height
+		var sliderX = 30, sliderY = sliderHeight + 5; // (x,y) location of center base of slider
+		var handleHalfWd = 12, handleHalfHt = 2, handleY = sliderY;  // handleY is current location of slider handle
+		var pxInterval = Math.floor(sliderHeight / maxSteps * gaugeSettings.outerScaleIntervals[1]);  // determine whole pixels between major ticks
+		var mousedown = false;
 
-				y += pxInterval;
-				sliderHeight = sliderY - y;
 
-				// draw vertical slider line
-				ctx.strokeStyle = "blue";
-				ctx.lineWidth = 5;
-				ctx.beginPath();
-				ctx.moveTo(sliderX, sliderY);
-				ctx.lineTo(sliderX, y);
-				ctx.stroke();
-				ctx.closePath();
+		function drawSlider() {
 
-				// draw slider handle based on current mouse position
-				
-				ctx.fillStyle = "black";
-				ctx.beginPath();
-				ctx.arc(sliderX - handleHalfWd, handleY, handleHalfHt, (Math.PI/180)*90, (Math.PI/180)*270, false);
-				ctx.lineTo(sliderX + handleHalfWd, handleY - handleHalfHt);
-				ctx.arc(sliderX + handleHalfWd, handleY, handleHalfHt, (Math.PI/180)*270, (Math.PI/180)*450, false);
-				ctx.lineTo(sliderX - handleHalfWd, handleY + handleHalfHt);
-				ctx.fill();
-				ctx.closePath();
+			ctx.rect(0,0,canvasWd,canvasHt);
+			ctx.clip();
+			ctx.clearRect(0,0,canvasWd,canvasHt);
+
+			var y = sliderY;
+
+			// draw slider tick marks
+			
+			ctx.lineWidth = 1;
+			for (var i = 0; i < maxSteps; i = i + gaugeSettings.outerScaleIntervals[1]) {
+				drawLine(i, y);
+				y -= pxInterval;
 			}
 
-			function drawLine(i, y) {
-				var x1 = sliderX - 5, x2 = sliderX + 5, label = false;
-				if (i % gaugeSettings.outerScaleIntervals[0] === 0) {
-						x1 -= 3;
-						x2 += 3;
-						label = true;
+			y += pxInterval;
+			sliderHeight = sliderY - y;  // adjust slider height to actual height based on pixel interval
+
+			// draw vertical slider line
+			ctx.strokeStyle = "blue";
+			ctx.lineWidth = 5;
+			ctx.beginPath();
+			ctx.moveTo(sliderX, sliderY);
+			ctx.lineTo(sliderX, y);
+			ctx.stroke();
+			ctx.closePath();
+
+			// draw slider handle
+			ctx.fillStyle = "black";
+			ctx.beginPath();
+			ctx.arc(sliderX - handleHalfWd, handleY, handleHalfHt, (Math.PI/180)*90, (Math.PI/180)*270, false);
+			ctx.lineTo(sliderX + handleHalfWd, handleY - handleHalfHt);
+			ctx.arc(sliderX + handleHalfWd, handleY, handleHalfHt, (Math.PI/180)*270, (Math.PI/180)*450, false);
+			ctx.lineTo(sliderX - handleHalfWd, handleY + handleHalfHt);
+			ctx.fill();
+			ctx.closePath();
+		}
+
+		function drawLine(i, y) {
+			var x1 = sliderX - 5, x2 = sliderX + 5, label = false;
+			if (i % gaugeSettings.outerScaleIntervals[0] === 0) {
+					x1 -= 3;
+					x2 += 3;
+					label = true;
+				}
+			ctx.beginPath();
+			ctx.moveTo(x1, y);
+			ctx.lineTo(x2, y);
+			ctx.stroke();
+			ctx.closePath();
+			if (label) {
+				ctx.fillStyle = "blue";
+				ctx.textBaseline = "middle";
+				ctx.textAlign = "start";
+				ctx.fillText(i.toString(), x2 + 8, y);
+			}
+		}
+
+		sliderCanvas.addEventListener('mousedown', (evt) => {
+			mousedown = true;
+		});
+		window.addEventListener('mouseup', (evt) => {
+			mousedown = false;
+		});
+
+		sliderCanvas.addEventListener('mousemove', function(evt) {
+			if (mousedown) {
+				var mousePos = getMousePos(this, evt);
+				//var message = onHandle + " -- Mouse position: " + mousePos.x + "," + mousePos.y + " || " + mousePos.msg;
+				//writeMessage(this, message);
+				if (isOnSlider(mousePos) && !isRunning) {
+					var value = (sliderY - mousePos.y) / sliderHeight * maxSteps;
+					
+					//console.log(value);
+					if (value < 0) {
+						handleY = sliderY;
+					} else if (value >= maxSteps) {
+						handleY = sliderY - sliderHeight;
+					} else {
+						handleY = mousePos.y;
 					}
-				ctx.beginPath();
-				ctx.moveTo(x1, y);
-				ctx.lineTo(x2, y);
-				ctx.stroke();
-				ctx.closePath();
-				if (label) {
-					ctx.fillStyle = "blue";
-					ctx.textBaseline = "middle";
-					ctx.textAlign = "start";
-					ctx.fillText(i.toString(), x2 + 8, y);
+					drawSlider();
+					if (!isRunning) {
+						// update gauge needle
+						gauge.setInputLevel(value);
+						gauge.drawScreen();
+						// update html slider
+						sliderCtrl.value = value / maxSteps * 100;
+					}
 				}
 			}
-
-			sliderCanvas.addEventListener('mousedown', (evt) => {
-				mousedown = true;
-			});
-			sliderCanvas.addEventListener('mouseup', (evt) => {
-				mousedown = false;
-			});
-
-			sliderCanvas.addEventListener('mousemove', function(evt) {
-				if (mousedown) {
-					var mousePos = getMousePos(this, evt);
-        	//var message = onHandle + " -- Mouse position: " + mousePos.x + "," + mousePos.y + " || " + mousePos.msg;
-        	//writeMessage(this, message);
-        	if (isOnSlider(mousePos) && !isRunning) {
-        		var value = (sliderY - mousePos.y) / sliderHeight * maxSteps;
-						
-						//console.log(value);
-						if (value < 0) {
-							handleY = sliderY;
-						} else if (value >= maxSteps) {
-							handleY = sliderY - sliderHeight;
-						} else {
-							handleY = mousePos.y;
-						}
-						drawSlider();
-						if (!isRunning) {
-							gauge.setInputLevel(value);
-							gauge.drawScreen();
-						}
-					}
-				}
-      }, false);
+		}, false);
 
 		function isOnSlider(mousePos) {
 			if (mousePos.x >= sliderX - handleHalfWd * 2 && mousePos.x <= sliderX + handleHalfWd * 2 &&
@@ -311,26 +330,37 @@
 			}
 		}
 		
-		// slider
-		var sliderCtrl = document.getElementById("slider");
+		// html slider control
 		sliderCtrl.addEventListener('input', (e) => {
-			console.log('change');
+			//console.log('change');
 			if (!isRunning) {
 				var value = sliderCtrl.value;
-				value /= 100;
-				value *= maxSteps;
+				var pctage = value / 100;
+				value = pctage * maxSteps;
 				if (value < 0) {
 					value = 0;
 				} else if (value >= maxSteps) {
 					value = maxSteps;
 				} 
+				// update gauge needle
 				gauge.setInputLevel(value);
 				gauge.drawScreen();
+				// update canvas slider
+				handleY = sliderY - (sliderHeight * pctage);
+				drawSlider();
 			}
 		}, false);
 
-	}
+		// TODO: on submit after changes to input field
 
+		// reset input fields
+		document.getElementById("reset").addEventListener('click', (e) => {
+			resetSettings();
+			gauge.drawScreen();
+			drawSlider();
+		});
+
+	} // end gaugeDemo()
 
 	</script>
 </head>
@@ -342,16 +372,18 @@
 		<canvas id="sliderCanvas" width="100" height="500" >
 	Your browser does not support HTML5 Canvas
 		</canvas>
-		<div>
+		<div class="bottom-space">
 			<button id="btn" type="button" class="btn-default">Start Simulation</button>
 			<label id="lbl"></label>
 		</div>
-		<div>
+		<div class="top-space">
 			<div class="labels">
 				<div class="min">0%</div>
 				<div class="max">100%</div>
 			</div>
-			<input id="slider" type="range" value="0">
+			<div class="bottom-space">
+				<input id="slider" type="range" value="0">
+			</div>
 		<div>
 		<div class="well">
 			<form class="form-inline relative">
