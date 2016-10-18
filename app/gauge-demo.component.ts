@@ -198,7 +198,7 @@ export class GaugeDemoComponent implements AfterViewInit  {
 
 	onSliderMouseMove(evt:Event):void {
     if (this.mousedown) {
-      var mousePos = this.getMousePos(this, evt);
+      var mousePos = this.getMousePos(this.sliderCanvas, evt);
       //var message = onHandle + " -- Mouse position: " + mousePos.x + "," + mousePos.y + " || " + mousePos.msg;
       //writeMessage(this, message);
       if (this.isOnSlider(mousePos) && !this.isRunning) {
@@ -225,7 +225,7 @@ export class GaugeDemoComponent implements AfterViewInit  {
   } // end onSliderMouseMove()
 
   getMousePos(canvas, evt) {
-    var rect = this.gaugeCanvas.getBoundingClientRect(), root = document.documentElement;
+    var rect = canvas.getBoundingClientRect(), root = document.documentElement;
 
     // return relative mouse position
     var mouseX = evt.clientX - rect.left - root.scrollLeft;

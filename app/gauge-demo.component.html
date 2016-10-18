@@ -2,7 +2,7 @@
   <canvas #gaugeCanvas width="500" height="500" >
 Your browser does not support HTML5 Canvas
   </canvas>	
-  <canvas #sliderCanvas width="100" height="500" (mousedown)="setMouseDown(true)" (input)="onSliderMouseMove()">
+  <canvas #sliderCanvas width="100" height="500" (mousedown)="setMouseDown(true)" (mousemove)="onSliderMouseMove($event)">
 Your browser does not support HTML5 Canvas
   </canvas>
   <div class="bottom-space">
@@ -15,7 +15,7 @@ Your browser does not support HTML5 Canvas
       <div class="max">100%</div>
     </div>
     <div class="bottom-space">
-      <input id="slider" type="range" [(ngModel)]="sliderCtrlValue" (input)="onSliderInput">
+      <input id="slider" type="range" [(ngModel)]="sliderCtrlValue" (input)="onSliderInput()">
     </div>
   <div>
   <div class="well">

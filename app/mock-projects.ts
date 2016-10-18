@@ -11,7 +11,7 @@ export const PROJECTS:Project[] = [
     componentName: 'GaugeDemoComponent',
     component: null,
     demo: "",
-    demoLink: 'http://www.flitfire.com/tech/code/gaugedemo.html',
+    demoLink: '',
     codeRepo: 'https://github.com/hollijr/a-little-control' },
   { id: 12, 
     title: 'Tank Game', 
