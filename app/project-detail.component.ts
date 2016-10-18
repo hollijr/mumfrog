@@ -15,8 +15,7 @@ export class ProjectDetailComponent implements OnInit  {
 
   constructor(
     private projectService:ProjectService, 
-    private route:ActivatedRoute) {
-
+    private route:ActivatedRoute) {  
   }
 
   ngOnInit():void {

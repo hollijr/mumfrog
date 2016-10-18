@@ -1,0 +1,83 @@
+<div>
+  <canvas #gaugeCanvas width="500" height="500" >
+Your browser does not support HTML5 Canvas
+  </canvas>	
+  <canvas #sliderCanvas width="100" height="500" (mousedown)="setMouseDown(true)" (input)="onSliderMouseMove()">
+Your browser does not support HTML5 Canvas
+  </canvas>
+  <div class="bottom-space">
+    <button id="btn" type="button" class="btn-default" (click)="toggleDemo()">{{demoBtnLbl}}</button>
+    <label id="lbl">{{demoStatusLbl}}</label>
+  </div>
+  <div class="top-space">
+    <div class="labels">
+      <div class="min">0%</div>
+      <div class="max">100%</div>
+    </div>
+    <div class="bottom-space">
+      <input id="slider" type="range" [(ngModel)]="sliderCtrlValue" (input)="onSliderInput">
+    </div>
+  <div>
+  <div class="well">
+    <form class="form-inline relative">
+      <div class="left inblock clear">
+        <h4>Gauge Variables</h4>
+        <div class="input clear left"><label>Input Granularity:</label><input id="inputGran" type="number" value="1" ></div>
+        <div class="input clear left"><label>Title:</label><input id="title1" type="text" value="ACCUMULATOR"></div>
+        <div class="input clear left"><label> </label><input id="title2" type="text" value="PRESSURE"></div>
+        <div class="input clear left"><label>Font:</label><input id="titleFont" type="text" value="18pt Arial"></div>
+        <div class="input clear left"><label>Gauge Diameter (px):</label><input id="gaugeDiam" type="number" step="1" value="175"></div>
+        <div class="input clear left"><label>Rim Width (px):</label><input id="rimWidth" type="number" step="1" value="25"></div>
+        <div class="input clear left"><label>Center Diameter (px):</label><input id="dialBaseDiam" type="number" step="1" value="25"></div>
+        <div class="input clear left"><label>Face Color:</label><input id="faceColor" type="color" value="#ffffff"></div>
+        <div class="input clear left"><label>Pointer Color:</label><input id="pointerColor" type="color" value="#0000FF"></div>
+        <div class="input clear left"><label>Start Degree:</label><input id="startDegree" type="number" step="1" value="135"></div>
+        <div class="input clear left"><label>End Degree:</label><input id="endDegree" type="number" step="1" value="405"></div>
+        <div class="input clear left"><label>Digit Width:</label><input id="digWd" type="number" step="1" value="60"></div>
+        <div class="input clear left"><label>Digit Height:</label><input id="digHt" type="number" step="1" value="14"></div>
+        <div class="input clear left"><label>Digit Font:</label><input id="digFnt" type="text" value="12pt Calibri"></div>
+        <div class="input clear left"><label>Digit Background Color:</label><input id="digBC" type="color" value="#efefef"></div>
+        <div class="input clear left"><label>CenterX (px):</label><input id="centerX" type="number" step="1" value="200"></div>
+        <div class="input clear left"><label>CenterY (px):</label><input id="centerY" type="number" step="1" value="250"> </div>
+        <div class="input clear left"><label>Include Inner Scale?:</label>
+          <select id="hasInnerScale">
+            <option value="true" [selected]="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+      </div>
+      <div class="left inblock clear">
+        <h4>Outer Scale</h4>
+        <div class="input clear left"><label>Scale Diameter (px):</label><input id="outerScaleDiam" type="number" step="1" value="100"></div>
+        <div class="input clear left"><label>Min Value:</label><input id="outerScaleRangeLo" type="number" value="0"></div>
+        <div class="input clear left"><label>Max Value:</label><input id="outerScaleRangeHi" type="number" value="6000"></div>
+        <div class="input clear left"><label>Major Interval:</label><input id="outerScaleIntervals1" type="number" value="500"></div>
+        <div class="input clear left"><label>Minor Interval:</label><input id="outerScaleIntervals2" type="number" value="100"></div>
+        <div class="input clear left"><label>Font:</label><input id="outerScaleFnt" type="text" value="8pt Calibri"></div>
+        <div class="input clear left"><label>Color:</label><input id="outerScaleColor" type="color" value="#000000"></div>
+        <div class="input clear left"><label>Unit:</label><input id="outerScaleUnit" type="text" value="PSI"></div>
+      </div>
+      <div class="left inblock">
+        <h4>Inner Scale</h4>
+        <div class="input clear left"><label>Scale Diameter (px):</label><input id="innerScaleDiam" type="number" step="1" value="96"></div>
+        <div class="input clear left"><label>Inner:Outer Ratio:</label><input id="innerScaleConvFactor" type="number" value="0.068573"></div>	
+        <div class="input clear left"><label>Min Value:</label><input id="innerScaleStartLabel" type="number" value="0"></div>
+        <div class="input clear left"><label>Major Interval:</label><input id="innerScaleIntervals1" type="number" value="50"></div>
+        <div class="input clear left"><label>Minor Interval:</label><input id="innerScaleIntervals2" type="number" value="10"></div>
+        <div class="input clear left"><label>Font:</label><input id="innerScaleFnt" type="text" value="8pt Arial"></div>
+        <div class="input clear left"><label>Color:</label><input id="innerScaleColor" type="color" value="#ff0000"></div>
+        <div class="input clear left"><label>Unit:</label><input id="innerScaleUnit" type="text" value="Kg/cm3"></div>
+        <div class="input clear left"><label>Match Outer End?:</label>
+          <select id="innerScaleToEnd">
+            <option value="true" [selected]="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+        <div class="input clear lower-right">
+          <button class="btn-default align-right" id="apply">Apply</button>
+          <button class="btn-default align-right" id="reset">Reset</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

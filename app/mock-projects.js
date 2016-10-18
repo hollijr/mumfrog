@@ -9,7 +9,7 @@ exports.PROJECTS = [
         componentName: 'GaugeDemoComponent',
         component: null,
         demo: "",
-        demoLink: 'code/gauge.html',
+        demoLink: 'http://www.flitfire.com/tech/code/gaugedemo.html',
         codeRepo: 'https://github.com/hollijr/a-little-control' },
     { id: 12,
         title: 'Tank Game',
@@ -328,17 +328,6 @@ exports.PROJECTS = [
     </tbody>\
     </table>",
         demoLink: 'http://www.flitfire.com/tech/robotic-vacuum-wars/',
-        codeRepo: '' },
-    { id: 23,
-        title: 'Mumfrog Web Site',
-        technology: ['Angular 2', 'Bootstrap'],
-        summary: 'Using the Angular 2 Framework to create a porfolio web site',
-        description: "<p>I wrote this site (that you are currently viewing) using the Angular 2 framework.  Data is supplied by a PHP (limitation of my web host) service on the server.</p><p>One of the most interesting parts of this project involved researching and experimenting how to dynamically generate components, which I use to provide the 'Demo' section at the bottom of some of the project detail pages, particularly components whose templates contain a canvas element and associated Javascript code..  </p>",
-        img: 'images/frog250.jpg',
-        componentName: '',
-        component: null,
-        demo: '',
-        demoLink: '',
-        codeRepo: 'https://github.com/hollijr/mumfrog' },
+        codeRepo: '' }
 ];
 //# sourceMappingURL=mock-projects.js.map
