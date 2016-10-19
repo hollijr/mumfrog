@@ -9,8 +9,8 @@ var Gauge = (function () {
         //    but not greater than the smallest indicator interval shown on the outer scale.
         // inputGranularity should be a number in the range: 0 < inputGranularity <= 1.  
         this.inputGranularity = 1;
-        this.gaugeNameLn1 = "";
-        this.gaugeNameLn2 = "";
+        this.gaugeNameLn1 = "GAUGE";
+        this.gaugeNameLn2 = "CONTROL";
         this.gaugeNmFnt = "18pt Arial";
         this.gaugeDiam = 175;
         this.rimWidth = 25;
@@ -51,8 +51,8 @@ var Gauge = (function () {
         if (this.inputGranularity > 1 || this.inputGranularity <= 0)
             this.inputGranularity = 1;
         //***** gauge title properties  *****// 
-        this.gaugeNameLn1 = (gaugeSettings.hasOwnProperty("titleLine1")) ? gaugeSettings.titleLine1 : "DEFAULT";
-        this.gaugeNameLn2 = (gaugeSettings.hasOwnProperty("titleLine2")) ? gaugeSettings.titleLine2 : "GAUGE";
+        this.gaugeNameLn1 = (gaugeSettings.hasOwnProperty("titleLine1")) ? gaugeSettings.titleLine1 : "GAUGE";
+        this.gaugeNameLn2 = (gaugeSettings.hasOwnProperty("titleLine2")) ? gaugeSettings.titleLine2 : "CONTROL";
         this.gaugeNmFnt = (gaugeSettings.hasOwnProperty("titleFont")) ? gaugeSettings.titleFont : "18pt Arial";
         //***** gauge border and background properties  *****// 
         this.gaugeDiam = (gaugeSettings.hasOwnProperty("gaugeDiam")) ? gaugeSettings.gaugeDiam : 175;

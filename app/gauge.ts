@@ -16,8 +16,8 @@ export class Gauge {
 	//    but not greater than the smallest indicator interval shown on the outer scale.
 	// inputGranularity should be a number in the range: 0 < inputGranularity <= 1.  
 	inputGranularity:number = 1;
-	gaugeNameLn1:string = "";
-	gaugeNameLn2:string = "";
+	gaugeNameLn1:string = "GAUGE";
+	gaugeNameLn2:string = "CONTROL";
 	gaugeNmFnt:string = "18pt Arial";
 	gaugeDiam:number = 175;
 	rimWidth:number = 25;
@@ -64,8 +64,8 @@ export class Gauge {
 		if (this.inputGranularity > 1 || this.inputGranularity <= 0) this.inputGranularity = 1;
 		
 		//***** gauge title properties  *****// 
-		this.gaugeNameLn1 = (gaugeSettings.hasOwnProperty("titleLine1")) ? gaugeSettings.titleLine1 : "DEFAULT";
-		this.gaugeNameLn2 = (gaugeSettings.hasOwnProperty("titleLine2")) ? gaugeSettings.titleLine2 : "GAUGE";
+		this.gaugeNameLn1 = (gaugeSettings.hasOwnProperty("titleLine1")) ? gaugeSettings.titleLine1 : "GAUGE";
+		this.gaugeNameLn2 = (gaugeSettings.hasOwnProperty("titleLine2")) ? gaugeSettings.titleLine2 : "CONTROL";
 		this.gaugeNmFnt = (gaugeSettings.hasOwnProperty("titleFont")) ? gaugeSettings.titleFont : "18pt Arial";
 
 		//***** gauge border and background properties  *****// 
