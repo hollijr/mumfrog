@@ -24,7 +24,7 @@ var GaugeDemoComponent = (function () {
             titleFont: "18pt Arial",
             gaugeDiam: 175,
             rimWidth: 25,
-            faceColor: "white",
+            faceColor: "#ffffff",
             centerX: 200,
             centerY: 250,
             startDegree: 135,
@@ -33,19 +33,19 @@ var GaugeDemoComponent = (function () {
             outerScaleRange: { s: 0, e: 6000 },
             outerScaleIntervals: [500, 100, 0],
             outerScaleFnt: "8pt Calibri",
-            outerScaleColor: "black",
+            outerScaleColor: "#000000",
             outerScaleUnit: "PSI",
             hasInnerScale: true,
             innerScaleConvFactor: 0.068573,
             innerScaleDiam: 96,
-            innerScaleStartLabel: 0,
+            innerScaleMin: 0,
             innerScaleIntervals: [50, 10, 0],
             innerScaleFnt: "8pt Arial",
-            innerScaleColor: "red",
+            innerScaleColor: "#ff0000",
             innerScaleUnit: "Kg/cm3",
             innerScaleToEnd: true,
             dialBaseDiam: 25,
-            pointerColor: "blue",
+            pointerColor: "#0000ff",
             digWd: 60,
             digHt: 14,
             digFnt: "12pt Calibri",
@@ -84,7 +84,7 @@ var GaugeDemoComponent = (function () {
         this.gaugeSettings.titleFont = "18pt Arial";
         this.gaugeSettings.gaugeDiam = 175;
         this.gaugeSettings.rimWidth = 25;
-        this.gaugeSettings.faceColor = "white";
+        this.gaugeSettings.faceColor = "#ffffff";
         this.gaugeSettings.centerX = 200;
         this.gaugeSettings.centerY = 250;
         this.gaugeSettings.startDegree = 135;
@@ -93,19 +93,19 @@ var GaugeDemoComponent = (function () {
         this.gaugeSettings.outerScaleRange = { s: 0, e: 6000 };
         this.gaugeSettings.outerScaleIntervals = [500, 100, 0]; // not using third interval at present
         this.gaugeSettings.outerScaleFnt = "8pt Calibri";
-        this.gaugeSettings.outerScaleColor = "black";
+        this.gaugeSettings.outerScaleColor = "#000000";
         this.gaugeSettings.outerScaleUnit = "PSI";
         this.gaugeSettings.hasInnerScale = true;
         this.gaugeSettings.innerScaleConvFactor = 0.068573;
         this.gaugeSettings.innerScaleDiam = 96;
-        this.gaugeSettings.innerScaleStartLabel = 0;
+        this.gaugeSettings.innerScaleMin = 0;
         this.gaugeSettings.innerScaleIntervals = [50, 10, 0];
         this.gaugeSettings.innerScaleFnt = "8pt Arial";
-        this.gaugeSettings.innerScaleColor = "red";
+        this.gaugeSettings.innerScaleColor = "#ff0000";
         this.gaugeSettings.innerScaleUnit = "Kg/cm3";
         this.gaugeSettings.innerScaleToEnd = true;
         this.gaugeSettings.dialBaseDiam = 25;
-        this.gaugeSettings.pointerColor = "blue";
+        this.gaugeSettings.pointerColor = "#0000ff";
         this.gaugeSettings.digWd = 60;
         this.gaugeSettings.digHt = 14;
         this.gaugeSettings.digFnt = "12pt Calibri";
@@ -132,7 +132,7 @@ var GaugeDemoComponent = (function () {
         y += this.pxInterval;
         this.sliderHeight = this.sliderY - y; // adjust slider height to actual height based on pixel interval
         // draw vertical slider line
-        this.ctx.strokeStyle = "blue";
+        this.ctx.strokeStyle = "#0000ff";
         this.ctx.lineWidth = 5;
         this.ctx.beginPath();
         this.ctx.moveTo(this.sliderX, this.sliderY);
@@ -140,7 +140,7 @@ var GaugeDemoComponent = (function () {
         this.ctx.stroke();
         this.ctx.closePath();
         // draw slider handle
-        this.ctx.fillStyle = "black";
+        this.ctx.fillStyle = "#000000";
         this.ctx.beginPath();
         this.ctx.arc(this.sliderX - this.handleHalfWd, this.handleY, this.handleHalfHt, (Math.PI / 180) * 90, (Math.PI / 180) * 270, false);
         this.ctx.lineTo(this.sliderX + this.handleHalfWd, this.handleY - this.handleHalfHt);
@@ -162,7 +162,7 @@ var GaugeDemoComponent = (function () {
         this.ctx.stroke();
         this.ctx.closePath();
         if (label) {
-            this.ctx.fillStyle = "blue";
+            this.ctx.fillStyle = "#0000ff";
             this.ctx.textBaseline = "middle";
             this.ctx.textAlign = "start";
             this.ctx.fillText(i.toString(), x2 + 8, y);
@@ -289,6 +289,62 @@ var GaugeDemoComponent = (function () {
             this.drawSlider();
         }
     }; // end onSliderInput()
+    GaugeDemoComponent.prototype.setSettings = function () {
+        this.gaugeSettings.gaugeDiam = this.enforceInt(this.gaugeSettings.gaugeDiam);
+        this.gaugeSettings.rimWidth = this.enforceInt(this.gaugeSettings.rimWidth);
+        this.gaugeSettings.centerX = this.enforceInt(this.gaugeSettings.centerX);
+        this.gaugeSettings.centerY = this.enforceInt(this.gaugeSettings.centerY);
+        this.gaugeSettings.startDegree = this.enforceInt(this.gaugeSettings.startDegree);
+        this.gaugeSettings.endDegree = this.enforceInt(this.gaugeSettings.endDegree);
+        this.gaugeSettings.outerScaleDiam = this.enforceInt(this.gaugeSettings.outerScaleDiam);
+        this.gaugeSettings.outerScaleRange.s = this.enforceInt(this.gaugeSettings.outerScaleRange.s);
+        this.gaugeSettings.outerScaleRange.e = this.enforceInt(this.gaugeSettings.outerScaleRange.e);
+        this.gaugeSettings.outerScaleIntervals[0] = this.enforceInt(this.gaugeSettings.outerScaleIntervals[0]);
+        this.gaugeSettings.outerScaleIntervals[1] = this.enforceInt(this.gaugeSettings.outerScaleIntervals[1]);
+        this.gaugeSettings.hasInnerScale = this.parseBoolean(this.gaugeSettings.hasInnerScale);
+        this.gaugeSettings.innerScaleConvFactor = this.enforceFloat(this.gaugeSettings.innerScaleConvFactor);
+        this.gaugeSettings.innerScaleDiam = this.enforceInt(this.gaugeSettings.innerScaleDiam);
+        this.gaugeSettings.innerScaleMin = this.enforceInt(this.gaugeSettings.innerScaleMin);
+        this.gaugeSettings.innerScaleIntervals[0] = this.enforceInt(this.gaugeSettings.innerScaleIntervals[0]);
+        this.gaugeSettings.innerScaleIntervals[1] = this.enforceInt(this.gaugeSettings.innerScaleIntervals[1]);
+        this.gaugeSettings.innerScaleToEnd = this.parseBoolean(this.gaugeSettings.innerScaleToEnd);
+        this.gaugeSettings.dialBaseDiam = this.enforceInt(this.gaugeSettings.dialBaseDiam);
+        this.gaugeSettings.digWd = this.enforceInt(this.gaugeSettings.digWd);
+        this.gaugeSettings.digHt = this.enforceInt(this.gaugeSettings.digHt);
+    }; // end setSettings()
+    GaugeDemoComponent.prototype.parseBoolean = function (str) {
+        str = str.toString().toLowerCase();
+        if (str === "true")
+            return true;
+        return false;
+    };
+    GaugeDemoComponent.prototype.enforceInt = function (num) {
+        return Math.floor(num);
+    };
+    GaugeDemoComponent.prototype.enforceFloat = function (num) {
+        return num * 1.0;
+    };
+    // apply settings
+    GaugeDemoComponent.prototype.onApply = function (e) {
+        this.setSettings(); // read settings from form into gaugeSettings object
+        this.gauge.updateSettings(this.gaugeSettings); // update Gauge object with settings object
+        this.inputLevels.curr = this.gaugeSettings.outerScaleRange.s; // reset current input to starting level
+        this.gauge.setInputLevel(this.inputLevels.curr); // update the gauge so needle is reset
+        this.gauge.drawScreen(); // draw gauge
+        this.setSliderValues(); // update the canvas slider variables so they match new settings
+        this.drawSlider(); // redraw canvas slider
+        this.resetSliderCtrl(); // reset the html slider control
+        e.preventDefault(); // prevent default HTTP request on submit
+    };
+    // reset input fields
+    GaugeDemoComponent.prototype.onReset = function (e) {
+        this.resetSettings();
+        this.gauge.drawScreen();
+        this.setSliderValues();
+        this.drawSlider();
+        this.resetSliderCtrl();
+        e.preventDefault();
+    };
     __decorate([
         core_1.ViewChild("gaugeCanvas"), 
         __metadata('design:type', Object)
@@ -307,29 +363,5 @@ var GaugeDemoComponent = (function () {
     ], GaugeDemoComponent);
     return GaugeDemoComponent;
 }());
-exports.GaugeDemoComponent = GaugeDemoComponent; // end runDemo()
-/*
-    // apply settings
-    onApply(e:Event):void {
-    setSettings();  // read settings from form into gaugeSettings object
-    gauge.updateSettings(gaugeSettings);  // update Gauge object with settings object
-    inputLevels.curr = gaugeSettings.outerScaleRange.s;  // reset current input to starting level
-    gauge.setInputLevel(inputLevels.curr);  // update the gauge so needle is reset
-    gauge.drawScreen();  // draw gauge
-    setSliderValues();  // update the canvas slider variables so they match new settings
-    drawSlider();  // redraw canvas slider
-    resetSliderCtrl();  // reset the html slider control
-    e.preventDefault(); // prevent default HTTP request on submit
-  }
-
-    // reset input fields
-    onReset(e:Event):void {
-    resetSettings();
-    gauge.drawScreen();
-    setSliderValues();
-    drawSlider();
-    resetSliderCtrl();
-    e.preventDefault();
-  }
-*/
+exports.GaugeDemoComponent = GaugeDemoComponent; // end class
 //# sourceMappingURL=gauge-demo.component.js.map

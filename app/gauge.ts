@@ -21,7 +21,7 @@ export class Gauge {
 	gaugeNmFnt:string = "18pt Arial";
 	gaugeDiam:number = 175;
 	rimWidth:number = 25;
-	faceColor:string = "white";
+	faceColor:string = "#ffffff";
 	centerX:number = 200;
 	centerY:number = 250;
 	startDegree:number = 135;
@@ -30,19 +30,19 @@ export class Gauge {
 	outerScaleRange = {s: 0, e: 6000};
 	outerScaleIntervals = [500,100,0];
 	outerScaleFnt:string = "8pt Calibri";
-	outerScaleColor:string = "black";
+	outerScaleColor:string = "#000000";
 	outerScaleUnit:string = "PSI";
 	hasInnerScale:boolean = false;
 	innerScaleConvFactor:number = 0.068573;
 	innerScaleDiam:number = 96;
-	innerScaleStartLabel:number = 0;
+	innerScaleMin:number = 0;
 	innerScaleIntervals : [50,10,0];
 	innerScaleFnt:string = "8pt Arial";
-	innerScaleColor:string = "red";
+	innerScaleColor:string = "#ff0000";
 	innerScaleUnit:string = "Kg/cm3";
 	innerScaleToEnd:boolean = true;
 	dialBaseDiam:number = 25;
-	pointerColor:string = "blue";
+	pointerColor:string = "#0000ff";
 	digWd:number = 60;
 	digHt:number = 14;
 	digFnt:string = "12pt Calibri";
@@ -71,7 +71,7 @@ export class Gauge {
 		//***** gauge border and background properties  *****// 
 		this.gaugeDiam = (gaugeSettings.hasOwnProperty("gaugeDiam")) ? gaugeSettings.gaugeDiam : 175;
 		this.rimWidth = (gaugeSettings.hasOwnProperty("rimWidth")) ? gaugeSettings.rimWidth : 25;
-		this.faceColor = (gaugeSettings.hasOwnProperty("faceColor")) ? gaugeSettings.faceColor : "white";	
+		this.faceColor = (gaugeSettings.hasOwnProperty("faceColor")) ? gaugeSettings.faceColor : "#ffffff";	
 
 		//***** centerpoint of gauge  *****// 
 		this.centerX = (gaugeSettings.hasOwnProperty("centerX")) ? gaugeSettings.centerX : 200;
@@ -93,7 +93,7 @@ export class Gauge {
 		this.outerScaleIntervals = (gaugeSettings.hasOwnProperty("outerScaleIntervals")) ? gaugeSettings.outerScaleIntervals : [500,100,0];
 
 		this.outerScaleFnt = (gaugeSettings.hasOwnProperty("outerScaleFnt")) ? gaugeSettings.outerScaleFnt : "8pt Calibri";
-		this.outerScaleColor = (gaugeSettings.hasOwnProperty("outerScaleColor")) ? gaugeSettings.outerScaleColor : "black";
+		this.outerScaleColor = (gaugeSettings.hasOwnProperty("outerScaleColor")) ? gaugeSettings.outerScaleColor : "#000000";
 		this.outerScaleUnit = (gaugeSettings.hasOwnProperty("outerScaleUnit")) ? gaugeSettings.outerScaleUnit : "PSI";
 
 		//***** minor scale properties  *****//
@@ -106,13 +106,13 @@ export class Gauge {
 		this.innerScaleDiam = (gaugeSettings.hasOwnProperty("innerScaleDiam")) ? gaugeSettings.innerScaleDiam : 96;
 
 		// start labeling major indicator marks at this number
-		this.innerScaleStartLabel = (gaugeSettings.hasOwnProperty("innerScaleStartLabel")) ? gaugeSettings.innerScaleStartLabel : 0;
+		this.innerScaleMin = (gaugeSettings.hasOwnProperty("innerScaleMin")) ? gaugeSettings.innerScaleMin : 0;
 
 		// interval = # of units between scale's major, minor and subminor indicator marks (set an interval to 0 if not applicable)
 		this.innerScaleIntervals = (gaugeSettings.hasOwnProperty("innerScaleIntervals")) ? gaugeSettings.innerScaleIntervals : [50,10,0];
 
 		this.innerScaleFnt = (gaugeSettings.hasOwnProperty("innerScaleFnt")) ? gaugeSettings.innerScaleFnt : "8pt Arial";
-		this.innerScaleColor = (gaugeSettings.hasOwnProperty("innerScaleColor")) ? gaugeSettings.innerScaleColor : "red";
+		this.innerScaleColor = (gaugeSettings.hasOwnProperty("innerScaleColor")) ? gaugeSettings.innerScaleColor : "#ff0000";
 		this.innerScaleUnit = (gaugeSettings.hasOwnProperty("innerScaleUnit")) ? gaugeSettings.innerScaleUnit : "Kg/cm3";
 
 		// if end of range is before end of outer scale's range, should additional tick markings be shown?
@@ -122,7 +122,7 @@ export class Gauge {
 		this.dialBaseDiam = (gaugeSettings.hasOwnProperty("dialBaseDiam")) ? gaugeSettings.dialBaseDiam : 25;
 		
 		//***** pointer properties  *****//
-		this.pointerColor = (gaugeSettings.hasOwnProperty("pointerColor")) ? gaugeSettings.pointerColor : "blue";
+		this.pointerColor = (gaugeSettings.hasOwnProperty("pointerColor")) ? gaugeSettings.pointerColor : "#0000ff";
 		
 		//***** conversions, lookups, max settings  *****//
 		this.maxSteps = ((this.outerScaleRange.e - this.outerScaleRange.s) / this.inputGranularity) + 1;
@@ -180,8 +180,8 @@ export class Gauge {
 		this.context.clearRect(0,0,this.gaugeCanvas.width,this.gaugeCanvas.height);
 
 		// name of gauge
-		writeMessage(this.context, this.gaugeNameLn1, this.gaugeNmFnt, "black", "center", "top", this.centerX, 10);
-		writeMessage(this.context, this.gaugeNameLn2, this.gaugeNmFnt, "black", "center", "top", this.centerX, 10 + gaugeNmFS * 1.25);
+		writeMessage(this.context, this.gaugeNameLn1, this.gaugeNmFnt, "#000000", "center", "top", this.centerX, 10);
+		writeMessage(this.context, this.gaugeNameLn2, this.gaugeNmFnt, "#000000", "center", "top", this.centerX, 10 + gaugeNmFS * 1.25);
 
 		// outer black circle
 		drawArc(this.context, this.centerX, this.centerY, this.gaugeDiam, 0, 2*Math.PI, false, "#030303", 0.5);
@@ -226,26 +226,26 @@ export class Gauge {
 			drawArc(this.context, this.centerX, this.centerY, this.innerScaleDiam, this.startRadian, this.endRadian, false, this.innerScaleColor, 1.25);
 
 			// draw inner scale major indicator markings
-			drawInnerSteps(this.context, this.lookupTbl, this.innerScaleDiam, this.innerScaleDiam - 5, this.centerX, this.centerY, this.innerScaleColor, 1, this.innerScaleIntervals[0], this.innerScaleStartLabel, innerStart, innerEnd, this.innerScaleToEnd, true, this.outerScaleFnt, this.startRadian, this.endRadian);
+			drawInnerSteps(this.context, this.lookupTbl, this.innerScaleDiam, this.innerScaleDiam - 5, this.centerX, this.centerY, this.innerScaleColor, 1, this.innerScaleIntervals[0], this.innerScaleMin, innerStart, innerEnd, this.innerScaleToEnd, true, this.outerScaleFnt, this.startRadian, this.endRadian);
 
 			// draw inner scale minor indicator markings
 			if (this.innerScaleIntervals[1] > 0) {
-				drawInnerSteps(this.context, this.lookupTbl, this.innerScaleDiam, this.innerScaleDiam - 3, this.centerX, this.centerY, this.innerScaleColor, 1, this.innerScaleIntervals[1], this.innerScaleStartLabel, innerStart, innerEnd, this.innerScaleToEnd, undefined, undefined, undefined, undefined);
+				drawInnerSteps(this.context, this.lookupTbl, this.innerScaleDiam, this.innerScaleDiam - 3, this.centerX, this.centerY, this.innerScaleColor, 1, this.innerScaleIntervals[1], this.innerScaleMin, innerStart, innerEnd, this.innerScaleToEnd, undefined, undefined, undefined, undefined);
 			}
 
 			// draw inner scale subminor indicator markings
 			if (this.innerScaleIntervals[2] > 0) {
-				drawInnerSteps(this.context, this.lookupTbl, this.innerScaleDiam, this.innerScaleDiam - 1, this.centerX, this.centerY, this.innerScaleColor, 1, this.innerScaleIntervals[2], this.innerScaleStartLabel, innerStart, innerEnd, this.innerScaleToEnd, undefined, undefined, undefined, undefined);
+				drawInnerSteps(this.context, this.lookupTbl, this.innerScaleDiam, this.innerScaleDiam - 1, this.centerX, this.centerY, this.innerScaleColor, 1, this.innerScaleIntervals[2], this.innerScaleMin, innerStart, innerEnd, this.innerScaleToEnd, undefined, undefined, undefined, undefined);
 			}
 		}
 
 		// inner black circle
 		drawArc(this.context, this.centerX, this.centerY, this.dialBaseDiam, 0, 2*Math.PI, true, "#787878", 1);
 		grd = this.context.createRadialGradient(this.centerX, this.centerY, this.dialBaseDiam, this.centerX, this.centerY, 0);
-		grd.addColorStop(0, "#000");
-		grd.addColorStop(.2, "#222");
-		grd.addColorStop(0.5, "#555");
-		grd.addColorStop(0.85, "#777");
+		grd.addColorStop(0, "#000000");
+		grd.addColorStop(.2, "#222222");
+		grd.addColorStop(0.5, "#555555");
+		grd.addColorStop(0.85, "#777777");
 		
 		this.context.fillStyle = grd;
 		this.context.fill();	
@@ -263,7 +263,7 @@ export class Gauge {
 
 		// draw digital display
 		this.context.beginPath();
-		this.context.strokeStyle = "black";
+		this.context.strokeStyle = "#000000";
 		this.context.lineWidth = 2;
 		this.context.rect(digDispX - 5, digDispY - 3, this.digWd + 10, this.digHt + 8);
 		this.context.stroke();

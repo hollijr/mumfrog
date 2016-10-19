@@ -57,3 +57,6 @@ button {
 .bottom-space {
   margin-bottom: 20px;
 }
+.relative {
+  position: relative;
+}

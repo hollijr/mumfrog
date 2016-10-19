@@ -18,29 +18,29 @@ Your browser does not support HTML5 Canvas
       <input id="slider" type="range" [(ngModel)]="sliderCtrlValue" (input)="onSliderInput()">
     </div>
   <div>
-  <div class="well">
+  <div class="well relative">
     <form class="form-inline relative">
       <div class="left inblock clear">
         <h4>Gauge Variables</h4>
-        <div class="input clear left"><label>Input Granularity:</label><input id="inputGran" type="number" value="1" ></div>
-        <div class="input clear left"><label>Title:</label><input id="title1" type="text" value="ACCUMULATOR"></div>
-        <div class="input clear left"><label> </label><input id="title2" type="text" value="PRESSURE"></div>
-        <div class="input clear left"><label>Font:</label><input id="titleFont" type="text" value="18pt Arial"></div>
-        <div class="input clear left"><label>Gauge Diameter (px):</label><input id="gaugeDiam" type="number" step="1" value="175"></div>
-        <div class="input clear left"><label>Rim Width (px):</label><input id="rimWidth" type="number" step="1" value="25"></div>
-        <div class="input clear left"><label>Center Diameter (px):</label><input id="dialBaseDiam" type="number" step="1" value="25"></div>
-        <div class="input clear left"><label>Face Color:</label><input id="faceColor" type="color" value="#ffffff"></div>
-        <div class="input clear left"><label>Pointer Color:</label><input id="pointerColor" type="color" value="#0000FF"></div>
-        <div class="input clear left"><label>Start Degree:</label><input id="startDegree" type="number" step="1" value="135"></div>
-        <div class="input clear left"><label>End Degree:</label><input id="endDegree" type="number" step="1" value="405"></div>
-        <div class="input clear left"><label>Digit Width:</label><input id="digWd" type="number" step="1" value="60"></div>
-        <div class="input clear left"><label>Digit Height:</label><input id="digHt" type="number" step="1" value="14"></div>
-        <div class="input clear left"><label>Digit Font:</label><input id="digFnt" type="text" value="12pt Calibri"></div>
-        <div class="input clear left"><label>Digit Background Color:</label><input id="digBC" type="color" value="#efefef"></div>
-        <div class="input clear left"><label>CenterX (px):</label><input id="centerX" type="number" step="1" value="200"></div>
-        <div class="input clear left"><label>CenterY (px):</label><input id="centerY" type="number" step="1" value="250"> </div>
+        <div class="input clear left"><label>Input Granularity:</label><input id="inputGran" type="number" value="{{gaugeSettings.inputGranularity}}" [readonly]="true"></div>
+        <div class="input clear left"><label>Title:</label><input name="title1" type="text" [(ngModel)]="gaugeSettings.titleLine1"></div>
+        <div class="input clear left"><label> </label><input name="title2" type="text" [(ngModel)]="gaugeSettings.titleLine2"></div>
+        <div class="input clear left"><label>Font:</label><input name="titleFont" type="text" [(ngModel)]="gaugeSettings.titleFont"></div>
+        <div class="input clear left"><label>Gauge Diameter (px):</label><input name="gaugeDiam" type="number" step="1" [(ngModel)]="gaugeSettings.gaugeDiam"></div>
+        <div class="input clear left"><label>Rim Width (px):</label><input name="rimWidth" type="number" step="1" [(ngModel)]="gaugeSettings.rimWidth"></div>
+        <div class="input clear left"><label>Center Diameter (px):</label><input name="dialBaseDiam" type="number" step="1" [(ngModel)]="gaugeSettings.dialBaseDiam"></div>
+        <div class="input clear left"><label>Face Color:</label><input name="faceColor" type="color" [(ngModel)]="gaugeSettings.faceColor"></div>
+        <div class="input clear left"><label>Pointer Color:</label><input name="pointerColor" type="color" [(ngModel)]="gaugeSettings.pointerColor"></div>
+        <div class="input clear left"><label>Start Degree:</label><input name="startDegree" type="number" step="1" [(ngModel)]="gaugeSettings.startDegree"></div>
+        <div class="input clear left"><label>End Degree:</label><input name="endDegree" type="number" step="1" [(ngModel)]="gaugeSettings.endDegree"></div>
+        <div class="input clear left"><label>Digit Width:</label><input name="digWd" type="number" step="1" [(ngModel)]="gaugeSettings.digWd"></div>
+        <div class="input clear left"><label>Digit Height:</label><input name="digHt" type="number" step="1" [(ngModel)]="gaugeSettings.digHt"></div>
+        <div class="input clear left"><label>Digit Font:</label><input name="digFnt" type="text" [(ngModel)]="gaugeSettings.digFnt">></div>
+        <div class="input clear left"><label>Digit Background Color:</label><input name="digBC" type="color" [(ngModel)]="gaugeSettings.digBC"></div>
+        <div class="input clear left"><label>CenterX (px):</label><input name="centerX" type="number" step="1" [(ngModel)]="gaugeSettings.centerX"></div>
+        <div class="input clear left"><label>CenterY (px):</label><input name="centerY" type="number" step="1" [(ngModel)]="gaugeSettings.centerY"> </div>
         <div class="input clear left"><label>Include Inner Scale?:</label>
-          <select id="hasInnerScale">
+          <select name="hasInnerScale" [(ngModel)]="gaugeSettings.hasInnerScale">
             <option value="true" [selected]="true">Yes</option>
             <option value="false">No</option>
           </select>
@@ -48,34 +48,34 @@ Your browser does not support HTML5 Canvas
       </div>
       <div class="left inblock clear">
         <h4>Outer Scale</h4>
-        <div class="input clear left"><label>Scale Diameter (px):</label><input id="outerScaleDiam" type="number" step="1" value="100"></div>
-        <div class="input clear left"><label>Min Value:</label><input id="outerScaleRangeLo" type="number" value="0"></div>
-        <div class="input clear left"><label>Max Value:</label><input id="outerScaleRangeHi" type="number" value="6000"></div>
-        <div class="input clear left"><label>Major Interval:</label><input id="outerScaleIntervals1" type="number" value="500"></div>
-        <div class="input clear left"><label>Minor Interval:</label><input id="outerScaleIntervals2" type="number" value="100"></div>
-        <div class="input clear left"><label>Font:</label><input id="outerScaleFnt" type="text" value="8pt Calibri"></div>
-        <div class="input clear left"><label>Color:</label><input id="outerScaleColor" type="color" value="#000000"></div>
-        <div class="input clear left"><label>Unit:</label><input id="outerScaleUnit" type="text" value="PSI"></div>
+        <div class="input clear left"><label>Scale Diameter (px):</label><input name="outerScaleDiam" type="number" step="1" [(ngModel)]="gaugeSettings.outerScaleDiam"></div>
+        <div class="input clear left"><label>Min Value:</label><input name="outerScaleRangeLo" type="number" [(ngModel)]="gaugeSettings.outerScaleRange.s"></div>
+        <div class="input clear left"><label>Max Value:</label><input name="outerScaleRangeHi" type="number" [(ngModel)]="gaugeSettings.outerScaleRange.e"></div>
+        <div class="input clear left"><label>Major Interval:</label><input name="outerScaleIntervals1" type="number" [(ngModel)]="gaugeSettings.outerScaleIntervals[0]"></div>
+        <div class="input clear left"><label>Minor Interval:</label><input name="outerScaleIntervals2" type="number" [(ngModel)]="gaugeSettings.outerScaleIntervals[1]"></div>
+        <div class="input clear left"><label>Font:</label><input name="outerScaleFnt" type="text" [(ngModel)]="gaugeSettings.outerScaleFnt"></div>
+        <div class="input clear left"><label>Color:</label><input name="outerScaleColor" type="color" [(ngModel)]="gaugeSettings.outerScaleColor"></div>
+        <div class="input clear left"><label>Unit:</label><input name="outerScaleUnit" type="text" [(ngModel)]="gaugeSettings.outerScaleUnit"></div>
       </div>
       <div class="left inblock">
         <h4>Inner Scale</h4>
-        <div class="input clear left"><label>Scale Diameter (px):</label><input id="innerScaleDiam" type="number" step="1" value="96"></div>
-        <div class="input clear left"><label>Inner:Outer Ratio:</label><input id="innerScaleConvFactor" type="number" value="0.068573"></div>	
-        <div class="input clear left"><label>Min Value:</label><input id="innerScaleStartLabel" type="number" value="0"></div>
-        <div class="input clear left"><label>Major Interval:</label><input id="innerScaleIntervals1" type="number" value="50"></div>
-        <div class="input clear left"><label>Minor Interval:</label><input id="innerScaleIntervals2" type="number" value="10"></div>
-        <div class="input clear left"><label>Font:</label><input id="innerScaleFnt" type="text" value="8pt Arial"></div>
-        <div class="input clear left"><label>Color:</label><input id="innerScaleColor" type="color" value="#ff0000"></div>
-        <div class="input clear left"><label>Unit:</label><input id="innerScaleUnit" type="text" value="Kg/cm3"></div>
+        <div class="input clear left"><label>Scale Diameter (px):</label><input name="innerScaleDiam" type="number" step="1" [(ngModel)]="gaugeSettings.innerScaleDiam"></div>
+        <div class="input clear left"><label>Inner:Outer Ratio:</label><input name="innerScaleConvFactor" type="number" [(ngModel)]="gaugeSettings.innerScaleConvFactor"></div>	
+        <div class="input clear left"><label>Min Value:</label><input name="innerScaleMin" type="number" [(ngModel)]="gaugeSettings.innerScaleMin"></div>
+        <div class="input clear left"><label>Major Interval:</label><input name="innerScaleIntervals1" type="number" [(ngModel)]="gaugeSettings.innerScaleIntervals[0]"></div>
+        <div class="input clear left"><label>Minor Interval:</label><input name="innerScaleIntervals2" type="number" [(ngModel)]="gaugeSettings.innerScaleIntervals[1]"></div>
+        <div class="input clear left"><label>Font:</label><input name="innerScaleFnt" type="text" [(ngModel)]="gaugeSettings.innerScaleFnt"></div>
+        <div class="input clear left"><label>Color:</label><input name="innerScaleColor" type="color" [(ngModel)]="gaugeSettings.innerScaleColor"></div>
+        <div class="input clear left"><label>Unit:</label><input name="innerScaleUnit" type="text" [(ngModel)]="gaugeSettings.innerScaleUnit"></div>
         <div class="input clear left"><label>Match Outer End?:</label>
-          <select id="innerScaleToEnd">
+          <select name="innerScaleToEnd" [(ngModel)]="gaugeSettings.titleLine1">
             <option value="true" [selected]="true">Yes</option>
             <option value="false">No</option>
           </select>
         </div>
         <div class="input clear lower-right">
-          <button class="btn-default align-right" id="apply">Apply</button>
-          <button class="btn-default align-right" id="reset">Reset</button>
+          <button class="btn-default align-right" name="apply" (click)="onApply($event)">Apply</button>
+          <button class="btn-default align-right" name="reset" (click)="onReset($event)">Reset</button>
         </div>
       </div>
     </form>
