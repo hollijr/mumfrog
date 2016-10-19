@@ -360,6 +360,16 @@ export class GaugeDemoComponent implements AfterViewInit  {
 	// apply settings
 	onApply(e:Event):void {
     this.setSettings();  // read settings from form into gaugeSettings object
+    this.update(e);
+  }
+
+	// reset input fields
+	onReset(e:Event):void {
+    this.resetSettings();
+    this.update(e);
+  }
+
+  update(e:Event):void {
     this.gauge.updateSettings(this.gaugeSettings);  // update Gauge object with settings object
     this.inputLevels.curr = this.gaugeSettings.outerScaleRange.s;  // reset current input to starting level
     this.gauge.setInputLevel(this.inputLevels.curr);  // update the gauge so needle is reset
@@ -368,16 +378,6 @@ export class GaugeDemoComponent implements AfterViewInit  {
     this.drawSlider();  // redraw canvas slider
     this.resetSliderCtrl();  // reset the html slider control
     e.preventDefault(); // prevent default HTTP request on submit
-  }
-
-	// reset input fields
-	onReset(e:Event):void {
-    this.resetSettings();
-    this.gauge.drawScreen();
-    this.setSliderValues();
-    this.drawSlider();
-    this.resetSliderCtrl();
-    e.preventDefault();
   }
 
 }  // end class

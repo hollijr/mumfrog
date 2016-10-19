@@ -327,6 +327,14 @@ var GaugeDemoComponent = (function () {
     // apply settings
     GaugeDemoComponent.prototype.onApply = function (e) {
         this.setSettings(); // read settings from form into gaugeSettings object
+        this.update(e);
+    };
+    // reset input fields
+    GaugeDemoComponent.prototype.onReset = function (e) {
+        this.resetSettings();
+        this.update(e);
+    };
+    GaugeDemoComponent.prototype.update = function (e) {
         this.gauge.updateSettings(this.gaugeSettings); // update Gauge object with settings object
         this.inputLevels.curr = this.gaugeSettings.outerScaleRange.s; // reset current input to starting level
         this.gauge.setInputLevel(this.inputLevels.curr); // update the gauge so needle is reset
@@ -335,15 +343,6 @@ var GaugeDemoComponent = (function () {
         this.drawSlider(); // redraw canvas slider
         this.resetSliderCtrl(); // reset the html slider control
         e.preventDefault(); // prevent default HTTP request on submit
-    };
-    // reset input fields
-    GaugeDemoComponent.prototype.onReset = function (e) {
-        this.resetSettings();
-        this.gauge.drawScreen();
-        this.setSliderValues();
-        this.drawSlider();
-        this.resetSliderCtrl();
-        e.preventDefault();
     };
     __decorate([
         core_1.ViewChild("gaugeCanvas"), 
