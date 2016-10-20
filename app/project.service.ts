@@ -9,6 +9,8 @@ import { GaugeDemoComponent } from './gauge-demo.component';
 
 export class ProjectService {
 
+  favoriteIds:number[] = [11,23,24,12];
+
   componentTable = {
     'GaugeDemoComponent': GaugeDemoComponent
   };
@@ -30,5 +32,9 @@ export class ProjectService {
                   }
                   return project;
                 });
+  }
+  getFavorites():Promise<Project[]> {
+    return this.getProjects()
+                .then(projects => projects.filter(project => this.favoriteIds.includes(project.id)));
   }
 }

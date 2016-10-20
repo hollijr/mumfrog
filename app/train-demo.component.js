@@ -316,4 +316,4 @@ var TankDemoComponent = (function () {
     return TankDemoComponent;
 }());
 exports.TankDemoComponent = TankDemoComponent; // end class
-//# sourceMappingURL=tank-demo.component.js.map
+//# sourceMappingURL=train-demo.component.js.map

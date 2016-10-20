@@ -17,8 +17,8 @@ export class DashboardComponent implements OnInit {
     private router:Router) {}
 
   ngOnInit():void {
-    this.projectService.getProjects()
-    .then(projects => this.favorites = projects.slice(0,4));
+    this.projectService.getFavorites()
+          .then(projects => this.favorites = projects);
   }
 
   favorites:Project[] = [];

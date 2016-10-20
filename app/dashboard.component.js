@@ -19,8 +19,8 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.projectService.getProjects()
-            .then(function (projects) { return _this.favorites = projects.slice(0, 4); });
+        this.projectService.getFavorites()
+            .then(function (projects) { return _this.favorites = projects; });
     };
     DashboardComponent.prototype.goToDetail = function (project) {
         var link = ['/detail', project.id];

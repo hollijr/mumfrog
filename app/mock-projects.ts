@@ -32,7 +32,7 @@ export const PROJECTS:Project[] = [
     img: 'images/bandbox.jpg', 
     componentName: '',
     component: null,
-    demo: `<p>THere are screenshots from the development version of the site.  To save time on styling and provide the content management facility, I started with a SiteOrigin Wordpress template.</p>
+    demo: `<p>There are screenshots from the development version of the site.  To save time on styling and provide the content management facility, I started with a SiteOrigin Wordpress template.</p>
       <p>On the home page, I redesigned the layout of the theme, adding the carousel, a Facebook feed and removing unnecessary pieces of the view.</p>
       <div class="margin-bottom20"><img src="images/bb-home.jpg" class="full-width"></div>
       <div class="margin-bottom20"><img src="images/bb-services.jpg" class="full-width"></div>
@@ -334,7 +334,6 @@ export const PROJECTS:Project[] = [
     </tr>\
     </tbody>\
     </table>",
-    demoObj: null,
     demoLink: 'http://www.flitfire.com/tech/robotic-vacuum-wars/',
     codeRepo: '' },
   { id: 23, 
@@ -351,4 +350,15 @@ export const PROJECTS:Project[] = [
     demo: "",
     demoLink: '',
     codeRepo: 'https://github.com/hollijr/a-little-control' },  
+    { id: 24, 
+    title: 'Cakespatter Cake Designer', 
+    technology: ['Angular 1.5', 'Bootstrap', 'CSS', 'HTML', 'JavaScript', 'jQuery', 'Three.js'], 
+    summary: 'A single-page 3D cake designing web app', 
+    description: ``, 
+    img: 'images/frog250.jpg', 
+    componentName: '',
+    component: null,
+    demo: "",
+    demoLink: '',
+    codeRepo: '' }
 ];

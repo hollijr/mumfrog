@@ -13,6 +13,7 @@ var mock_projects_1 = require('./mock-projects');
 var gauge_demo_component_1 = require('./gauge-demo.component');
 var ProjectService = (function () {
     function ProjectService() {
+        this.favoriteIds = [11, 23, 24, 12];
         this.componentTable = {
             'GaugeDemoComponent': gauge_demo_component_1.GaugeDemoComponent
         };
@@ -36,6 +37,11 @@ var ProjectService = (function () {
             }
             return project;
         });
+    };
+    ProjectService.prototype.getFavorites = function () {
+        var _this = this;
+        return this.getProjects()
+            .then(function (projects) { return projects.filter(function (project) { return _this.favoriteIds.includes(project.id); }); });
     };
     ProjectService = __decorate([
         core_1.Injectable(), 
