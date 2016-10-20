@@ -30,7 +30,7 @@ exports.PROJECTS = [
         img: 'images/bandbox.jpg',
         componentName: '',
         component: null,
-        demo: '<my-gauge-demo></my-gauge-demo>',
+        demo: "<p>THere are screenshots from the development version of the site.  To save time on styling and provide the content management facility, I started with a SiteOrigin Wordpress template.</p>\n      <p>On the home page, I redesigned the layout of the theme, adding the carousel, a Facebook feed and removing unnecessary pieces of the view.</p>\n      <div class=\"margin-bottom20\"><img src=\"images/bb-home.jpg\" class=\"full-width\"></div>\n      <div class=\"margin-bottom20\"><img src=\"images/bb-services.jpg\" class=\"full-width\"></div>\n      <div class=\"margin-bottom20\"><img src=\"images/bb-location.jpg\" class=\"full-width\"></div>\n    ",
         demoLink: '',
         codeRepo: '' },
     { id: 14,
@@ -327,7 +327,19 @@ exports.PROJECTS = [
     </tr>\
     </tbody>\
     </table>",
+        demoObj: null,
         demoLink: 'http://www.flitfire.com/tech/robotic-vacuum-wars/',
-        codeRepo: '' }
+        codeRepo: '' },
+    { id: 23,
+        title: 'Mumfrog Portfolio Web Site',
+        technology: ['Angular 2.0', 'Bootstrap', 'CSS', 'HTML', 'PHP', 'TypeScript'],
+        summary: 'My new personal web site built using Angular 2',
+        description: "<p>I created my original personal web site using WordPress, Joomla and custom PHP.  When is came time to update the data in the site, I decided I wanted a new site altogether.  So I built this new portfolio site (the one you're currently accessing) using Angular 2.0.</p>\n    <p>This site is the first project I've done using Angular 2.0, which was in beta (late RC) when I started the rewrite and subsequently released prior to my completing this site.  So initially, there was not a lot of documentation for the framework (and therefore, a lot of trial and error and googling on my part...).  Though I had already written a project using Angular 1.5 (i.e., cakespatter), learning Angular 2.0 had a steep learning curve as essentially, I had to stop thinking in 1.5 terms and look at things in the new 2.0 way.  Good fun.<p>\n    <p>The most interesting piece in writing this site was implementing dynamic creation of unique components.  Looking at the site, when you click on one of my JavaScript-based projects from the 'Projects' page, the project details page that appears contains a dynamically-created component in the 'demo' portion (bottom half) of the page.  The project details page is itself a reusable component and the nested 'demo' component varies based on which project was selected.  Each demo component is unique rather than sharing a reusable template.  To make this work, I created the demo components and put the name of each component's class into the 'Project' model (meaning, 'componentName' is a property of my Project class).  Then when a project is selected, if the project has a componentName (a string) assigned, a Component object matching the name of the component will be dynamically created and displayed.  I used the DCLWrapper component (credit: http://stackoverflow.com/questions/36325212/angular-2-dynamic-tabs-with-user-click-chosen-components/36325468#36325468) to convert the string name to a Type, which is then used by the ComponentFactoryResolver to create the needed component.</p>\n    <p>The dynamic components were slightly more complex than the Dynamic Tabs example illustrating the DCLWrapper usage because these components all have one or more nested HTML canvas elements. Essentially, I'm using a component to embed a canvas application into the project details page.  So in the end, making this work was challenging but it taught me a lot about how Angular 2.0 works.</p>",
+        img: 'images/frog250.jpg',
+        componentName: '',
+        component: null,
+        demo: "",
+        demoLink: '',
+        codeRepo: 'https://github.com/hollijr/a-little-control' },
 ];
 //# sourceMappingURL=mock-projects.js.map

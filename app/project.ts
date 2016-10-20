@@ -6,10 +6,10 @@ export class Project {
   technology:string[];
   summary:string;
   description:string;
-  componentName:string;
-  component:Component;
-  demo:string;
-  demoLink:string;
+  componentName:string;  // name of Angular 2 component class for the demo, if one exists
+  component:Component;  // placeholder - used by the 
+  demo:string;  // placed in 'innerHTML' property of div
+  demoLink:string;  // placed in anchor element
   codeRepo:string;
   img:string;
 }

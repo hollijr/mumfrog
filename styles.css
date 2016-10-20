@@ -46,3 +46,16 @@ img {
 * {
   font-family: Cambria, Georgia, serif;;
 }
+
+/* styling for demo innerHTML */
+.demo .inset {
+  width: 300px;
+  margin: 10px auto;
+  display: block;
+  clear: both;
+  padding: 0;
+}
+.demo img {
+  margin-bottom: 20px;
+  width: 100%;
+}

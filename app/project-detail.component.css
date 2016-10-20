@@ -26,14 +26,4 @@ button {
 .demo-content {
   width: 100%;
 }
-.inset {
-  width: 300px;
-  margin: 10px auto;
-  display: block;
-  clear: both;
-  padding: 0;
-}
-.inset img {
-  width: 100%;
-}
 
