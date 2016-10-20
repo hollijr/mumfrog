@@ -10,19 +10,25 @@ export const PROJECTS:Project[] = [
     img: 'images/gauge.png', 
     componentName: 'GaugeDemoComponent',
     component: null,
-    demo: "",
+    demo: `<p>This demo contains a gauge control that runs in the HTML canvas.  There are three ways to see how the gauge works:</p>
+    <ul>
+    <li>drag the handle on the vertical slider to manually change the input value for the gauge. (I made this slider using the HTML canvas and JavaScript.)</li>
+    <li>change the setting of the HTML range control shown below the gauge.  This control's appearance will vary based on your browser.  The range of the control is 0% to 100% of the maximum input value of the gauge.</li>
+    <li>click on the 'Start Simulation' button to run a simulation using randomly-generated input values.  The simulation randomly generates a target input value in the gauge's range and moves the gauge needle to that target value.  Once at the target value, a random-length pause occurs (the needle stops moving) followed by the generation of a new target value (so the needle starts moving again).  While the simulation is running, the preceding two manual controls for changing input are inactivated.</li>
+    </ul>
+    <p>The settings of the control can be modified using the form at the bottom of the page.</p>`,
     demoLink: '',
     codeRepo: 'https://github.com/hollijr/a-little-control' },
   { id: 12, 
     title: 'Tank Game', 
     technology: ['Android'], 
     summary: 'An Android app based on the Atari Tank game', 
-    description: "<p>lorem ipsum</p>", 
+    description: "<p>Details coming soon...</p>", 
     img: 'images/frog250.jpg', 
     componentName: '',
     component: null,
-    demo: '<p>This is a <b>demo</b>.</p>',
-    demoLink: 'demoLink',
+    demo: '<p><em>Details coming soon...<em></p>',
+    demoLink: '',
     codeRepo: '' },
   { id: 13, 
     title: 'BandBox Salon Web Site', 
@@ -55,7 +61,7 @@ export const PROJECTS:Project[] = [
     title: 'Club Entry System', 
     technology: ['Java', 'MySQL'], 
     summary: 'A Java/MySQL application for tracking member attendance', 
-    description: "<p>lorem ipsum</p>", 
+    description: "<p>Details coming soon...</p>", 
     img: 'images/frog250.jpg', 
     componentName: '',
     component: null,
@@ -99,7 +105,7 @@ export const PROJECTS:Project[] = [
     title: 'Algorithms & Data Structures', 
     technology: ['Python'], 
     summary: 'Source code for common sort algorithms and data structures, written in Python', 
-    description: "<p>lorem ipsum</p>", 
+    description: "<p>Details coming soon...</p>", 
     img: 'images/frog250.jpg', 
     componentName: '',
     component: null,
@@ -110,7 +116,7 @@ export const PROJECTS:Project[] = [
     title: 'Family Tree', 
     technology: ['Angular'], 
     summary: 'A JavaScript web app', 
-    description: "<p>lorem ipsum</p>", 
+    description: "<p>Details coming soon...</p>", 
     img: 'images/frog250.jpg', 
     componentName: '',
     component: null,
@@ -338,12 +344,12 @@ export const PROJECTS:Project[] = [
     codeRepo: '' },
   { id: 23, 
     title: 'Mumfrog Portfolio Web Site', 
-    technology: ['Angular 2.0', 'Bootstrap', 'CSS', 'HTML', 'PHP', 'TypeScript'], 
+    technology: ['Angular 2.0', 'Bootstrap', 'CSS', 'HTML', 'PHP', 'TypeScript', 'JavaScript', 'Photoshop'], 
     summary: 'My new personal web site built using Angular 2', 
-    description: `<p>I created my original personal web site using WordPress, Joomla and custom PHP.  When is came time to update the data in the site, I decided I wanted a new site altogether.  So I built this new portfolio site (the one you're currently accessing) using Angular 2.0.</p>
-    <p>This site is the first project I've done using Angular 2.0, which was in beta (late RC) when I started the rewrite and subsequently released prior to my completing this site.  So initially, there was not a lot of documentation for the framework (and therefore, a lot of trial and error and googling on my part...).  Though I had already written a project using Angular 1.5 (i.e., cakespatter), learning Angular 2.0 had a steep learning curve as essentially, I had to stop thinking in 1.5 terms and look at things in the new 2.0 way.  Good fun.<\p>
-    <p>The most interesting piece in writing this site was implementing dynamic creation of unique components.  Looking at the site, when you click on one of my JavaScript-based projects from the 'Projects' page, the project details page that appears contains a dynamically-created component in the 'demo' portion (bottom half) of the page.  The project details page is itself a reusable component and the nested 'demo' component varies based on which project was selected.  Each demo component is unique rather than sharing a reusable template.  To make this work, I created the demo components and put the name of each component's class into the 'Project' model (meaning, 'componentName' is a property of my Project class).  Then when a project is selected, if the project has a componentName (a string) assigned, a Component object matching the name of the component will be dynamically created and displayed.  I used the DCLWrapper component (credit: http://stackoverflow.com/questions/36325212/angular-2-dynamic-tabs-with-user-click-chosen-components/36325468#36325468) to convert the string name to a Type, which is then used by the ComponentFactoryResolver to create the needed component.</p>
-    <p>The dynamic components were slightly more complex than the Dynamic Tabs example illustrating the DCLWrapper usage because these components all have one or more nested HTML canvas elements. Essentially, I'm using a component to embed a canvas application into the project details page.  So in the end, making this work was challenging but it taught me a lot about how Angular 2.0 works.</p>`, 
+    description: `<p>I created my original personal web site using WordPress, Joomla and custom PHP.  When it came time to update the data in the site, I decided I wanted a new site altogether.  So I built this new portfolio site (the one you're currently accessing) using Angular 2.0.</p>
+    <p>This site is the first project I've done using Angular 2.0, which was in beta (late RC) when I started the rewrite and was subsequently released prior to my completing this site.  So initially, there was not a lot of documentation for the framework (and therefore, a lot of trial and error and googling on my part...).  Though I had already written a project using Angular 1.5 (i.e., cakespatter), learning Angular 2.0 had a steep learning curve as essentially, I had to stop thinking in 1.5 terms and look at things in the new 2.0 way.  Good fun.<\p>
+    <p>The most interesting piece in writing this site was implementing dynamic creation of unique components.  Looking at the site, when you click on one of my JavaScript-based projects from the 'Projects' page, the project details page that appears contains a dynamically-created component in the 'demo' portion (bottom half) of the page.  The project details page is itself a reusable component and the nested 'demo' component varies based on which project was selected.  Each demo component is unique rather than sharing a reusable template.  To make this work, I created the demo components and put the name of each component's class into the 'Project' model (meaning, 'componentName' is a property of my Project class).  Then when a project is selected, if the project has a componentName (a string) assigned, a Component object matching the name of the component will be dynamically created and displayed.  I used the DCLWrapper component (credit: Günter Zöchbauer, <a href="http://stackoverflow.com/questions/36325212/angular-2-dynamic-tabs-with-user-click-chosen-components/36325468#36325468" target="blank">http://stackoverflow.com/questions/36325212/angular-2-dynamic-tabs-with-user-click-chosen-components/36325468#36325468</a>) to convert the string name to a Type, which is then used by the ComponentFactoryResolver to create the needed component.</p>
+    <p>The dynamic components I created were slightly more complex than the Dynamic Tabs example that was used to explain usage of the DCLWrapper because these components all have one or more nested HTML canvas elements. Essentially, I'm using a component to embed a canvas application into the project details page.  So in the end, making this work was challenging but it taught me a lot about how Angular 2.0 works.</p>`, 
     img: 'images/frog250.jpg', 
     componentName: '',
     component: null,
@@ -354,7 +360,7 @@ export const PROJECTS:Project[] = [
     title: 'Cakespatter Cake Designer', 
     technology: ['Angular 1.5', 'Bootstrap', 'CSS', 'HTML', 'JavaScript', 'jQuery', 'Three.js'], 
     summary: 'A single-page 3D cake designing web app', 
-    description: ``, 
+    description: `<p>Details coming soon...</p>`, 
     img: 'images/frog250.jpg', 
     componentName: '',
     component: null,
