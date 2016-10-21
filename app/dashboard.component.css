@@ -27,14 +27,17 @@ h3 {
   height: 100%;
   padding: 20px;
   text-align: center;
-  color: #eee;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px black;
   background-color: #b4e19e;
   border-radius: 2px;
 }
 h4 {
   position: relative;
 }
-
+.text-muted {
+  text-shadow: none;
+}
 .dashboard {
   text-align: center;
   padding: 15px 0;
@@ -43,11 +46,11 @@ h4 {
   border-bottom: 1px solid #eee;
   background: linear-gradient(to right, #fafafa, #fff, #fafafa);
 }
-
 .project-panel:hover {
   background-color: #EEE;
   cursor: pointer;
   color: #09B40D;
+  text-shadow: none;
 }
 .grid-pad {
   padding: 10px 0;
