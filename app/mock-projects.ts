@@ -38,7 +38,7 @@ export const PROJECTS:Project[] = [
     img: 'images/bandbox.jpg', 
     componentName: '',
     component: null,
-    demo: `<p>There are screenshots from the development version of the site.  To save time on styling and provide the content management facility, I started with a SiteOrigin Wordpress template.</p>
+    demo: `<p>Following are screenshots from the development version of the site.  To save time on styling and provide the content management facility, I started with a SiteOrigin Wordpress template.</p>
       <p>On the home page, I redesigned the layout of the theme, adding the carousel, a Facebook feed and removing unnecessary pieces of the view.</p>
       <div class="margin-bottom20"><img src="images/bb-home.jpg" class="full-width"></div>
       <div class="margin-bottom20"><img src="images/bb-services.jpg" class="full-width"></div>
@@ -50,11 +50,20 @@ export const PROJECTS:Project[] = [
     title: 'Kent Swim & Tennis Club Web Site', 
     technology: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'], 
     summary: 'A LAMP-based Web Application', 
-    description: "<p>This site is built from the ground up using the LAMP stack. It was my first use of PHP.</p><p>(2016 Update: Because I no longer had time to support this website, I encouraged this club to move to TeamUnify to provide their website services. They finally did so this year.)</p>", 
+    description: "<p>This site is built from the ground up using the LAMP stack. It was my first use of PHP.  The system was broken into three modules, each associated with a specific access permission level.</p><p>(2016 Update: Because I no longer had time to support this website, I encouraged this club to move to TeamUnify to provide their website services. They finally did so this year.)</p>", 
     img: 'images/kstc.jpg', 
     componentName: '',
     component: null,
-    demo: '',
+    demo: `<p>Following are screenshots from the development system for this site.</p>
+      <p>The home page and associated pages linked from the sidebar were open to all users.  Navigation was possible by clicking on menu links or by clicking on one of the pictures in the main content window.</p>
+      <div class="margin-bottom20"><img src="images/kstc-home.jpg" class="full-width"></div>
+      <p>Selecting either the 'Members' or 'Administration' links required access privilege.  The 'Members' link was restricted to members only so users had to login to access the menu (shown in sidebar) belonging to the 'Members' module.</p>
+      <div class="margin-bottom20"><img src="images/kstc-memonly.jpg" class="full-width"></div>
+      <p>Administration of the site content was restricted to members of the board of trustees.  They were able to update database content through the administration menu as well as update page content and layout.  The following images show how a user can create, delete, update and rearrange different views of the pages that are accessible from the home menu.  The snapshots show how the 'Swim Team' page is maintained, with the last image showing the resulting page that was presented to users from the Home menu.</p>
+      <div class="margin-bottom20"><img src="images/kstc-admin.png" class="full-width"></div>
+      <p>The result:</p> 
+      <div class="margin-bottom20"><img src="images/kstc-swim.jpg" class="full-width"></div>
+    `,
     demoLink: '',
     codeRepo: '' },
   { id: 15, 

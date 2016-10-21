@@ -4,24 +4,21 @@
 }
 .sidebar {
   border-left: solid 1px #eee;
-}
-.sidebar-img {
-  width: 100%;
+  margin-left: -1px;  /* so border lines up with border from sidebar */
+  padding: 0 10px;
 }
 button {
   cursor: pointer; cursor: hand;
   width: 90%;
   margin: 20px auto;
 }
-.project-detail {
-  margin: 0 0 2em 0;
-  padding: 0;
-}
 .content {
   border-right: solid 1px #eee;
-  padding: 20px;
+  padding: 0 10px;
   position: relative;
-  margin-left: -1px;  /* so border lines up with border from sidebar */
+}
+.demo {
+  padding: 0 10px;
 }
 .demo-content {
   width: 100%;
