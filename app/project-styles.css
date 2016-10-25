@@ -23,6 +23,7 @@
   width: 100%;
   height: 100%;
   border: solid 4px transparent;
+  outline: solid 1px #cccccc;
 }
 .project-panel:hover {
   border-color: #b4e19e;
